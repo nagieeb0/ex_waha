@@ -4,9 +4,12 @@ defmodule ExWaha.Session.Registry do
 
   Registry key is a stable `{provider, account_key}` tuple so the same logical
   account always resolves to the same server — even across restarts.
+
+  The per-account-struct mapping is provided by `ExWaha.Session.Keyable`,
+  which external provider apps implement for their own account structs.
   """
 
-  alias ExWaha.Providers
+  alias ExWaha.Session.Keyable
 
   @registry __MODULE__
 
@@ -22,11 +25,5 @@ defmodule ExWaha.Session.Registry do
   end
 
   @spec key(struct()) :: term()
-  def key(%Providers.Waha.Account{instance: %{base_url: url}, session: session}) do
-    {:waha, url, session}
-  end
-
-  def key(%Providers.Meta.Account{phone_number_id: pn_id}) do
-    {:meta, pn_id}
-  end
+  def key(account), do: Keyable.key(account)
 end

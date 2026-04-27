@@ -72,6 +72,9 @@ func dispatch(ctx context.Context, mgr *sessionManager, msg *frame) {
 	case "send_text":
 		handleSendText(ctx, mgr, msg)
 
+	case "send_media":
+		handleSendMedia(ctx, mgr, msg)
+
 	case "logout":
 		handleLogout(ctx, mgr, msg)
 
