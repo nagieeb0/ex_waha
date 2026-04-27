@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.40.1">
+    <meta name="project" content="ExWaha v0.1.0">
+
+
+    <title>ExWaha — ExWaha v0.1.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
+
+    <script defer src="dist/sidebar_items-CDDD7C96.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-YU4BZFVS.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+ExWaha
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras="Pages"></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-module" id="main" data-type="modules">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ExWaha</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>
+      <span translate="no">ExWaha</span> 
+      <small class="app-vsn" translate="no">(ExWaha v0.1.0)</small>
+
+    </h1>
+
+<a href="ExWaha.md" title="Copy Markdown (hold Ctrl/Cmd and click it to open as Markdown)" class="copy-markdown icon-action" rel="help">
+  <i class="ri-markdown-line" aria-hidden="true"></i>
+  <span class="sr-only">Copy Markdown</span>
+</a>
+
+
+
+      <a href="https://github.com/nagieeb/ex_waha/blob/v0.1.0/lib/ex_waha.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+    <section id="moduledoc">
+<p>Public facade for the ex_waha library.</p><p>ExWaha is a provider-agnostic WhatsApp client. Two providers ship in the box:</p><ul><li><a href="ExWaha.Providers.Waha.html"><code class="inline">ExWaha.Providers.Waha</code></a> — wraps a self-hosted WAHA server (WhatsApp HTTP API).</li><li><a href="ExWaha.Providers.Meta.html"><code class="inline">ExWaha.Providers.Meta</code></a> — wraps Meta's official WhatsApp Business Cloud API.</li></ul><p>Both implement <a href="ExWaha.Provider.html"><code class="inline">ExWaha.Provider</code></a>. Application code talks to the facade and
+the facade dispatches based on the account struct it receives.</p><h2 id="module-multi-tenancy" class="section-heading"><a href="#module-multi-tenancy" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Multi-tenancy</span></h2><p>ExWaha is stateless and persistence-free. Each call takes an account struct
+(<a href="ExWaha.Providers.Waha.Account.html"><code class="inline">ExWaha.Providers.Waha.Account</code></a> or <a href="ExWaha.Providers.Meta.Account.html"><code class="inline">ExWaha.Providers.Meta.Account</code></a>) and a
+recipient. Host applications own the mapping <code class="inline">profile_id -&gt; account</code> in their
+database. See the <a href="multi_tenancy.html">Multi-tenancy guide</a>.</p><h2 id="module-ban-risk" class="section-heading"><a href="#module-ban-risk" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Ban risk</span></h2><p>WhatsApp aggressively bans accounts that look like bots. The OTP layer
+(<a href="ExWaha.Session.Server.html"><code class="inline">ExWaha.Session.Server</code></a>) enforces a token-bucket rate limit, a warmup ramp
+for new sessions, and randomized jitter between sends. Outbound code paths
+should go through this facade (which calls <a href="ExWaha.SafeSend.html"><code class="inline">ExWaha.SafeSend</code></a>) rather than
+the raw provider modules. See the <a href="safety_and_bans.html">Safety and bans guide</a>.</p><h2 id="module-quick-examples" class="section-heading"><a href="#module-quick-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Quick examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">account</span><span class="w"> </span><span class="o">=</span><span class="w">
+  </span><span class="nc">ExWaha.Providers.Waha.Account</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="3538654862-1">(</span><span class="w">
+    </span><span class="nc">ExWaha.Instance</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="3538654862-2">(</span><span class="ss">base_url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://localhost:3000&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">api_key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;key&quot;</span><span class="p" data-group-id="3538654862-2">)</span><span class="p">,</span><span class="w">
+    </span><span class="s">&quot;profile_42&quot;</span><span class="w">
+  </span><span class="p" data-group-id="3538654862-1">)</span><span class="w">
+
+</span><span class="nc">ExWaha</span><span class="o">.</span><span class="n">send_text</span><span class="p" data-group-id="3538654862-3">(</span><span class="n">account</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+201001234567&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello!&quot;</span><span class="p" data-group-id="3538654862-3">)</span><span class="w">
+</span><span class="c1">#=&gt; {:ok, %{&quot;id&quot; =&gt; &quot;msg_abc&quot;}}</span></code></pre>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h2 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h2>
+<div class="summary-types summary">
+  <h3>
+    <a href="#types">Types</a>
+  </h3>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:account/0" data-no-tooltip="" translate="no">account()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Either a WAHA or Meta account struct.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:recipient/0" data-no-tooltip="" translate="no">recipient()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>An <a href="ExWaha.Recipient.html"><code class="inline">ExWaha.Recipient</code></a> struct or a phone string. Strings get normalized.</p></div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h3>
+    <a href="#functions">Functions</a>
+  </h3>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#send_media/4" data-no-tooltip="" translate="no">send_media(account, recipient, media, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Send a media message (image, video, audio, document) via the safety gate.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#send_template/4" data-no-tooltip="" translate="no">send_template(account, recipient, template_name, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Send a pre-approved Meta message template.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#send_text/4" data-no-tooltip="" translate="no">send_text(account, recipient, text, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Send a text message via the safety gate.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h2 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h2>
+
+    <div class="types-list">
+<section class="detail" id="t:account/0">
+
+  <div class="detail-header">
+    <a href="#t:account/0" class="detail-link" data-no-tooltip="" aria-label="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">account()</h1>
+
+
+        <a href="https://github.com/nagieeb/ex_waha/blob/v0.1.0/lib/ex_waha.ex#L43" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> account() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">struct</a>()</pre>
+
+      </div>
+
+<p>Either a WAHA or Meta account struct.</p>
+  </section>
+</section>
+<section class="detail" id="t:recipient/0">
+
+  <div class="detail-header">
+    <a href="#t:recipient/0" class="detail-link" data-no-tooltip="" aria-label="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">recipient()</h1>
+
+
+        <a href="https://github.com/nagieeb/ex_waha/blob/v0.1.0/lib/ex_waha.ex#L46" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> recipient() :: <a href="ExWaha.Recipient.html#t:t/0">ExWaha.Recipient.t</a>() | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+<p>An <a href="ExWaha.Recipient.html"><code class="inline">ExWaha.Recipient</code></a> struct or a phone string. Strings get normalized.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h2 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h2>
+
+    <div class="functions-list">
+<section class="detail" id="send_media/4">
+
+    <span id="send_media/3"></span>
+
+  <div class="detail-header">
+    <a href="#send_media/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">send_media(account, recipient, media, opts \\ [])</h1>
+
+
+        <a href="https://github.com/nagieeb/ex_waha/blob/v0.1.0/lib/ex_waha.ex#L104" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> send_media(<a href="#t:account/0">account</a>(), <a href="#t:recipient/0">recipient</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()} | {:error, <a href="ExWaha.Error.html#t:t/0">ExWaha.Error.t</a>()}</pre>
+
+      </div>
+
+<p>Send a media message (image, video, audio, document) via the safety gate.</p><p>The <code class="inline">media</code> map must include <code class="inline">:type</code> (<code class="inline">:image | :video | :audio | :document</code>)
+and the provider-specific media descriptor.</p><h2 id="send_media/4-waha-example" class="section-heading"><a href="#send_media/4-waha-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">WAHA example</span></h2><pre><code class="makeup elixir" translate="no"><span class="nc">ExWaha</span><span class="o">.</span><span class="n">send_media</span><span class="p" data-group-id="3901457291-1">(</span><span class="n">account</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+201001234567&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3901457291-2">%{</span><span class="w">
+  </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:image</span><span class="p">,</span><span class="w">
+  </span><span class="ss">file</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3901457291-3">%{</span><span class="ss">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://example.com/photo.jpg&quot;</span><span class="p" data-group-id="3901457291-3">}</span><span class="p">,</span><span class="w">
+  </span><span class="ss">caption</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;look at this&quot;</span><span class="w">
+</span><span class="p" data-group-id="3901457291-2">}</span><span class="p" data-group-id="3901457291-1">)</span></code></pre><h2 id="send_media/4-meta-example" class="section-heading"><a href="#send_media/4-meta-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Meta example</span></h2><pre><code class="makeup elixir" translate="no"><span class="nc">ExWaha</span><span class="o">.</span><span class="n">send_media</span><span class="p" data-group-id="3195531409-1">(</span><span class="n">meta_account</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+201001234567&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3195531409-2">%{</span><span class="w">
+  </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:image</span><span class="p">,</span><span class="w">
+  </span><span class="ss">link</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://example.com/photo.jpg&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">caption</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;look at this&quot;</span><span class="w">
+</span><span class="p" data-group-id="3195531409-2">}</span><span class="p" data-group-id="3195531409-1">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="send_template/4">
+
+    <span id="send_template/3"></span>
+
+  <div class="detail-header">
+    <a href="#send_template/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">send_template(account, recipient, template_name, opts \\ [])</h1>
+
+
+        <a href="https://github.com/nagieeb/ex_waha/blob/v0.1.0/lib/ex_waha.ex#L135" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> send_template(<a href="#t:account/0">account</a>(), <a href="#t:recipient/0">recipient</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()} | {:error, <a href="ExWaha.Error.html#t:t/0">ExWaha.Error.t</a>()}</pre>
+
+      </div>
+
+<p>Send a pre-approved Meta message template.</p><p>Meta requires templates outside the 24-hour customer service window. WAHA
+returns <code class="inline">{:error, %ExWaha.Error{reason: :forbidden}}</code> since it does not
+participate in the template system.</p><h2 id="send_template/4-options" class="section-heading"><a href="#send_template/4-options" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Options</span></h2><ul><li><code class="inline">:language</code> — template language code (defaults to <code class="inline">&quot;en_US&quot;</code>)</li><li><code class="inline">:components</code> — Meta template components list (header / body / button
+parameters)</li></ul><h2 id="send_template/4-example" class="section-heading"><a href="#send_template/4-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="nc">ExWaha</span><span class="o">.</span><span class="n">send_template</span><span class="p" data-group-id="4719551154-1">(</span><span class="n">meta_account</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+201001234567&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;order_shipped&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">language</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;en_US&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">components</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4719551154-2">[</span><span class="w">
+    </span><span class="p" data-group-id="4719551154-3">%{</span><span class="w">
+      </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;body&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">parameters</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4719551154-4">[</span><span class="p" data-group-id="4719551154-5">%{</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;text&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">text</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;TRACK-12345&quot;</span><span class="p" data-group-id="4719551154-5">}</span><span class="p" data-group-id="4719551154-4">]</span><span class="w">
+    </span><span class="p" data-group-id="4719551154-3">}</span><span class="w">
+  </span><span class="p" data-group-id="4719551154-2">]</span><span class="w">
+</span><span class="p" data-group-id="4719551154-1">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="send_text/4">
+
+    <span id="send_text/3"></span>
+
+  <div class="detail-header">
+    <a href="#send_text/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">send_text(account, recipient, text, opts \\ [])</h1>
+
+
+        <a href="https://github.com/nagieeb/ex_waha/blob/v0.1.0/lib/ex_waha.ex#L76" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> send_text(<a href="#t:account/0">account</a>(), <a href="#t:recipient/0">recipient</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()} | {:error, <a href="ExWaha.Error.html#t:t/0">ExWaha.Error.t</a>()}</pre>
+
+      </div>
+
+<p>Send a text message via the safety gate.</p><p>The recipient can be:</p><ul><li>a phone string in any format — non-digits are stripped</li><li>an <a href="ExWaha.Recipient.html"><code class="inline">ExWaha.Recipient</code></a> struct (see <a href="ExWaha.Recipient.html#new/1"><code class="inline">ExWaha.Recipient.new/1</code></a> and
+<a href="ExWaha.Recipient.html#group/1"><code class="inline">ExWaha.Recipient.group/1</code></a>)</li></ul><h2 id="send_text/4-options" class="section-heading"><a href="#send_text/4-options" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Options</span></h2><p>Forwarded to the underlying provider. WAHA accepts <code class="inline">:reply_to</code> and
+<code class="inline">:link_preview</code>. Meta accepts <code class="inline">:preview_url</code>.</p><h2 id="send_text/4-returns" class="section-heading"><a href="#send_text/4-returns" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Returns</span></h2><ul><li><code class="inline">{:ok, response_body}</code> on 2xx</li><li><code class="inline">{:error, %ExWaha.Error{}}</code> on rate-limit refusal, signature failure,
+transport errors, or non-2xx responses</li></ul><h2 id="send_text/4-example" class="section-heading"><a href="#send_text/4-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_account</span><span class="p" data-group-id="8581046763-1">(</span><span class="p" data-group-id="8581046763-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">ExWaha</span><span class="o">.</span><span class="n">send_text</span><span class="p" data-group-id="8581046763-2">(</span><span class="n">account</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+20 100 123 4567&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello!&quot;</span><span class="p" data-group-id="8581046763-2">)</span><span class="w">
+</span><span class="p" data-group-id="8581046763-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8581046763-4">%{</span><span class="s">&quot;id&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;msg_...&quot;</span><span class="p" data-group-id="8581046763-4">}</span><span class="p" data-group-id="8581046763-3">}</span></code></pre>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/ex_waha/0.1.0">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/ex_waha/0.1.0">Hex Preview</a>
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="llms.txt" target="_blank">
+                View llms.txt
+              </a>
+
+
+              <a href="ExWaha.epub">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.40.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

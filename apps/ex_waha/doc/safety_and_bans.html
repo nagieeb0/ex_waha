@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.40.1">
+    <meta name="project" content="ExWaha v0.1.0">
+
+
+    <title>Safety and bans — ExWaha v0.1.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
+
+    <script defer src="dist/sidebar_items-CDDD7C96.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-YU4BZFVS.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+ExWaha
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras="Pages"></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ExWaha</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>Safety and bans</h1>
+
+<a href="safety_and_bans.md" title="Copy Markdown (hold Ctrl/Cmd and click it to open as Markdown)" class="copy-markdown icon-action" rel="help">
+  <i class="ri-markdown-line" aria-hidden="true"></i>
+  <span class="sr-only">Copy Markdown</span>
+</a>
+
+
+      <a href="https://github.com/nagieeb/ex_waha/blob/v0.1.0/guides/safety_and_bans.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+<p>WhatsApp aggressively bans accounts that look automated. This is <em>not</em>
+optional reading — getting banned at scale is the single biggest risk of
+running on WAHA, and most defenses must be present <em>before</em> the first
+message goes out. Meta's official Cloud API is friendlier but enforces
+templates and the 24-hour customer service window instead.</p><h2 id="what-gets-you-banned" class="section-heading"><a href="#what-gets-you-banned" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">What gets you banned</span></h2><table><thead><tr><th style="text-align: left;">Signal</th><th style="text-align: left;">Risk</th><th style="text-align: left;">Mitigation built in</th></tr></thead><tbody><tr><td style="text-align: left;">Bursty sends from a new number</td><td style="text-align: left;"><strong>Very high</strong></td><td style="text-align: left;">Warmup curve in <code class="inline">Safety.Warmup</code></td></tr><tr><td style="text-align: left;">Sending faster than a human types</td><td style="text-align: left;">High</td><td style="text-align: left;">Token bucket + jitter</td></tr><tr><td style="text-align: left;">Sending to non-WhatsApp numbers</td><td style="text-align: left;">High</td><td style="text-align: left;"><code class="inline">Api.Contacts.check_exists/2</code> before send</td></tr><tr><td style="text-align: left;">Recipient reports as spam</td><td style="text-align: left;">High</td><td style="text-align: left;">App-level: opt-in tracking, allow unsubscribe</td></tr><tr><td style="text-align: left;">Same number on multiple &quot;devices&quot; simultaneously</td><td style="text-align: left;">Medium</td><td style="text-align: left;">One WAHA session per number; don't share</td></tr><tr><td style="text-align: left;">Identical message body to many recipients</td><td style="text-align: left;">Medium</td><td style="text-align: left;">App-level: vary content, use templates on Meta</td></tr><tr><td style="text-align: left;">Sending outside business hours / time zones</td><td style="text-align: left;">Low–Medium</td><td style="text-align: left;">App-level: schedule sends respecting recipient TZ</td></tr></tbody></table><h2 id="what-ex_waha-does-for-you" class="section-heading"><a href="#what-ex_waha-does-for-you" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">What <code class="inline">:ex_waha</code> does for you</span></h2><p>Every send routed through <a href="ExWaha.html#send_text/4"><code class="inline">ExWaha.send_text/4</code></a> (or <code class="inline">send_media</code>,
+<code class="inline">send_template</code>) goes through <a href="ExWaha.SafeSend.html#dispatch/2"><code class="inline">ExWaha.SafeSend.dispatch/2</code></a>, which:</p><ol><li>Looks up the account's <code class="inline">Session.Server</code> in the registry.</li><li>Calls <code class="inline">gated_call/2</code> which serializes a token-bucket reservation.</li><li>If no token is available, returns <code class="inline">{:error, %Error{reason: :rate_limited, retry_after_ms: n}}</code>.</li><li>If the session isn't <code class="inline">:working</code>, returns <code class="inline">{:error, %Error{reason: :session_not_started}}</code>.</li><li>Otherwise sleeps a randomized jitter (default 300–1500ms) before
+making the HTTP call.</li></ol><p>If no <code class="inline">Session.Server</code> is registered for the account, <code class="inline">dispatch/2</code> falls
+through to the bare HTTP call — <strong>explicit opt-out for tests and scripts</strong>.
+In production code paths, always run sessions under
+<a href="ExWaha.Session.Supervisor.html"><code class="inline">ExWaha.Session.Supervisor</code></a>.</p><h2 id="the-warmup-curve" class="section-heading"><a href="#the-warmup-curve" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">The warmup curve</span></h2><p><a href="ExWaha.Safety.Warmup.html#params/2"><code class="inline">ExWaha.Safety.Warmup.params/2</code></a> interpolates the bucket size and refill
+rate from &quot;warmup&quot; defaults to &quot;steady-state&quot; defaults over <code class="inline">:warmup_days</code>
+days (default 14):</p><table><thead><tr><th style="text-align: left;">Day</th><th style="text-align: left;">Capacity</th><th style="text-align: left;">Refill (msg/s)</th><th style="text-align: left;">Effective steady throughput</th></tr></thead><tbody><tr><td style="text-align: left;">0</td><td style="text-align: left;">5</td><td style="text-align: left;">0.2</td><td style="text-align: left;">~12 msg/min</td></tr><tr><td style="text-align: left;">7</td><td style="text-align: left;">18</td><td style="text-align: left;">0.6</td><td style="text-align: left;">~36 msg/min</td></tr><tr><td style="text-align: left;">14+</td><td style="text-align: left;">30</td><td style="text-align: left;">1.0</td><td style="text-align: left;">~60 msg/min</td></tr></tbody></table><p>These are <strong>conservative</strong> defaults intended to avoid bans on personal
+WhatsApp numbers. Business API numbers tolerate more; tune with:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># config/runtime.exs</span><span class="w">
+</span><span class="n">config</span><span class="w"> </span><span class="ss">:ex_waha</span><span class="p">,</span><span class="w"> </span><span class="ss">:rate_limit</span><span class="p">,</span><span class="w">
+  </span><span class="ss">capacity</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+  </span><span class="ss">refill_per_second</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w">
+  </span><span class="ss">warmup_days</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+  </span><span class="ss">warmup_capacity</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="ss">warmup_refill_per_second</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
+  </span><span class="ss">jitter_ms</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8107758497-1">{</span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">2500</span><span class="p" data-group-id="8107758497-1">}</span></code></pre><p>These are read once when each <code class="inline">Session.Server</code> initializes. To change the
+bucket on a running session, restart it (terminate + ensure_started).</p><h2 id="number-existence-checks" class="section-heading"><a href="#number-existence-checks" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Number existence checks</span></h2><p>Sending to a number that isn't on WhatsApp is one of the strongest ban
+signals. For any unsolicited outbound:</p><pre><code class="makeup elixir" translate="no"><span class="k">case</span><span class="w"> </span><span class="nc">ExWaha.Api.Contacts</span><span class="o">.</span><span class="n">check_exists</span><span class="p" data-group-id="1170585929-1">(</span><span class="n">account</span><span class="p">,</span><span class="w"> </span><span class="n">phone</span><span class="p" data-group-id="1170585929-1">)</span><span class="w"> </span><span class="k" data-group-id="1170585929-2">do</span><span class="w">
+  </span><span class="p" data-group-id="1170585929-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1170585929-4">%{</span><span class="ss">exists</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w"> </span><span class="ss">chat_id</span><span class="p">:</span><span class="w"> </span><span class="n">chat_id</span><span class="p" data-group-id="1170585929-4">}</span><span class="p" data-group-id="1170585929-3">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="nc">ExWaha</span><span class="o">.</span><span class="n">send_text</span><span class="p" data-group-id="1170585929-5">(</span><span class="n">account</span><span class="p">,</span><span class="w"> </span><span class="n">chat_id</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p" data-group-id="1170585929-5">)</span><span class="w">
+
+  </span><span class="p" data-group-id="1170585929-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1170585929-7">%{</span><span class="ss">exists</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p" data-group-id="1170585929-7">}</span><span class="p" data-group-id="1170585929-6">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="p" data-group-id="1170585929-8">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="ss">:not_on_whatsapp</span><span class="p" data-group-id="1170585929-8">}</span><span class="w">
+
+  </span><span class="p" data-group-id="1170585929-9">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="1170585929-9">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="n">err</span><span class="w">
+</span><span class="k" data-group-id="1170585929-2">end</span></code></pre><p>Build this into your enqueue path so the check happens once per recipient
+per day (cache it), not on every message.</p><h2 id="things-exwaha-cannot-do-for-you" class="section-heading"><a href="#things-exwaha-cannot-do-for-you" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Things ExWaha cannot do for you</span></h2><ul><li><strong>Consent tracking.</strong> Persist explicit opt-in; reject sends to recipients
+who haven't opted in. Honor &quot;STOP&quot; replies.</li><li><strong>Business hours.</strong> Don't ping customers at 3am their local time.</li><li><strong>Content variation.</strong> Send 1000 identical messages and you will get
+banned regardless of rate limit.</li><li><strong>Quiet days.</strong> Long pauses then bursts look unnatural; spread sends out.</li><li><strong>Recovery from ban.</strong> If a session fails repeatedly, <em>stop sending from
+that account</em>. Continued sends after a ban accelerate further action.</li></ul><h2 id="detecting-trouble" class="section-heading"><a href="#detecting-trouble" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Detecting trouble</span></h2><p>Monitor these telemetry events:</p><pre><code class="makeup elixir" translate="no"><span class="nc">:telemetry</span><span class="o">.</span><span class="n">attach_many</span><span class="p" data-group-id="8762748569-1">(</span><span class="w">
+  </span><span class="s">&quot;ex-waha-bans&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="p" data-group-id="8762748569-2">[</span><span class="w">
+    </span><span class="p" data-group-id="8762748569-3">[</span><span class="ss">:ex_waha</span><span class="p">,</span><span class="w"> </span><span class="ss">:rate_limit</span><span class="p">,</span><span class="w"> </span><span class="ss">:throttled</span><span class="p" data-group-id="8762748569-3">]</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="8762748569-4">[</span><span class="ss">:ex_waha</span><span class="p">,</span><span class="w"> </span><span class="ss">:session</span><span class="p">,</span><span class="w"> </span><span class="ss">:status_changed</span><span class="p" data-group-id="8762748569-4">]</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="8762748569-5">[</span><span class="ss">:ex_waha</span><span class="p">,</span><span class="w"> </span><span class="ss">:request</span><span class="p">,</span><span class="w"> </span><span class="ss">:stop</span><span class="p" data-group-id="8762748569-5">]</span><span class="w">
+  </span><span class="p" data-group-id="8762748569-2">]</span><span class="p">,</span><span class="w">
+  </span><span class="o">&amp;</span><span class="nc">MyApp.WhatsappAlerts</span><span class="o">.</span><span class="n">handle</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="no">nil</span><span class="w">
+</span><span class="p" data-group-id="8762748569-1">)</span></code></pre><p>Specifically alert on:</p><ul><li><code class="inline">request.stop</code> with <code class="inline">error.reason in [:account_banned, :forbidden]</code></li><li><code class="inline">session.status_changed</code> to <code class="inline">:failed</code> (especially if it bounces repeatedly)</li><li>A spike in <code class="inline">rate_limit.throttled</code> (your senders are racing the bucket;
+raise capacity or reduce send pressure upstream)</li></ul><p>When in doubt, <strong>stop sending and investigate</strong>. There is no &quot;unblock&quot;
+button at WhatsApp.</p>
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="multi_tenancy.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Multi-tenancy
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="webhooks.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Webhooks
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/ex_waha/0.1.0">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/ex_waha/0.1.0">Hex Preview</a>
+
+                (<a href="https://preview.hex.pm/preview/ex_waha/0.1.0/show/guides/safety_and_bans.md">current file</a>)
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="llms.txt" target="_blank">
+                View llms.txt
+              </a>
+
+
+              <a href="ExWaha.epub">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.40.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

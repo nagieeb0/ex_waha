@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.40.1">
+    <meta name="project" content="ExWaha v0.1.0">
+
+
+    <title>ExWaha — ExWaha v0.1.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
+
+    <script defer src="dist/sidebar_items-CDDD7C96.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-YU4BZFVS.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+ExWaha
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras="Pages"></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ExWaha</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>ExWaha</h1>
+
+<a href="readme.md" title="Copy Markdown (hold Ctrl/Cmd and click it to open as Markdown)" class="copy-markdown icon-action" rel="help">
+  <i class="ri-markdown-line" aria-hidden="true"></i>
+  <span class="sr-only">Copy Markdown</span>
+</a>
+
+
+      <a href="https://github.com/nagieeb/ex_waha/blob/v0.1.0/README.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+<p><a href="https://hex.pm/packages/ex_waha"><img src="https://img.shields.io/hexpm/v/ex_waha.svg" alt="Hex.pm"/></a>
+<a href="https://hexdocs.pm/ex_waha"><img src="https://img.shields.io/badge/hex-docs-lightgreen.svg" alt="Documentation"/></a></p><p>Provider-agnostic WhatsApp client for Elixir. Talk to a self-hosted <a href="https://waha.devlike.pro">WAHA</a>
+server <strong>or</strong> Meta's official WhatsApp Business Cloud API through the same
+function calls. Multi-tenant by construction. Ban-aware by default.</p><blockquote><p><strong>Heads up:</strong> Sending WhatsApp messages — especially via WAHA, which uses the
+WhatsApp Web protocol — carries real risk of account bans. Read
+<a href="safety_and_bans.html">Safety and bans</a> before going to production.</p></blockquote><h2 id="installation" class="section-heading"><a href="#installation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Installation</span></h2><p>Add <code class="inline">:ex_waha</code> to your <code class="inline">mix.exs</code>:</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">deps</span><span class="w"> </span><span class="k" data-group-id="3235326716-1">do</span><span class="w">
+  </span><span class="p" data-group-id="3235326716-2">[</span><span class="w">
+    </span><span class="p" data-group-id="3235326716-3">{</span><span class="ss">:ex_waha</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.1.0&quot;</span><span class="p" data-group-id="3235326716-3">}</span><span class="w">
+  </span><span class="p" data-group-id="3235326716-2">]</span><span class="w">
+</span><span class="k" data-group-id="3235326716-1">end</span></code></pre><p>If you'll receive webhooks via Phoenix, also add
+<a href="https://hex.pm/packages/ex_waha_phoenix"><code class="inline">:ex_waha_phoenix</code></a>. If you use Ash,
+add <a href="https://hex.pm/packages/ash_waha"><code class="inline">:ash_waha</code></a>.</p><h2 id="quick-start" class="section-heading"><a href="#quick-start" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Quick start</span></h2><pre><code class="makeup elixir" translate="no"><span class="c1"># 1. Build a per-tenant account struct</span><span class="w">
+</span><span class="n">account</span><span class="w"> </span><span class="o">=</span><span class="w">
+  </span><span class="nc">ExWaha.Providers.Waha.Account</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="9260196204-1">(</span><span class="w">
+    </span><span class="nc">ExWaha.Instance</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="9260196204-2">(</span><span class="w">
+      </span><span class="ss">base_url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://waha.internal:3000&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">api_key</span><span class="p">:</span><span class="w"> </span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="9260196204-3">(</span><span class="s">&quot;WAHA_API_KEY&quot;</span><span class="p" data-group-id="9260196204-3">)</span><span class="w">
+    </span><span class="p" data-group-id="9260196204-2">)</span><span class="p">,</span><span class="w">
+    </span><span class="s">&quot;profile_42&quot;</span><span class="p">,</span><span class="w">                       </span><span class="c1"># session name (your tenant id, derived)</span><span class="w">
+    </span><span class="ss">webhook_secret</span><span class="p">:</span><span class="w"> </span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="9260196204-4">(</span><span class="s">&quot;WAHA_WEBHOOK_SECRET&quot;</span><span class="p" data-group-id="9260196204-4">)</span><span class="w">
+  </span><span class="p" data-group-id="9260196204-1">)</span><span class="w">
+
+</span><span class="c1"># 2. Bring it under the safety supervisor (rate limit + warmup + jitter)</span><span class="w">
+</span><span class="p" data-group-id="9260196204-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="c">_pid</span><span class="p" data-group-id="9260196204-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ExWaha.Session.Supervisor</span><span class="o">.</span><span class="n">ensure_started</span><span class="p" data-group-id="9260196204-6">(</span><span class="n">account</span><span class="p" data-group-id="9260196204-6">)</span><span class="w">
+
+</span><span class="c1"># 3. After WAHA reports the WhatsApp pairing succeeded, mark it sendable</span><span class="w">
+</span><span class="nc">ExWaha.Session.Server</span><span class="o">.</span><span class="n">set_status</span><span class="p" data-group-id="9260196204-7">(</span><span class="w">
+  </span><span class="nc">ExWaha.Session.Registry</span><span class="o">.</span><span class="n">via</span><span class="p" data-group-id="9260196204-8">(</span><span class="n">account</span><span class="p" data-group-id="9260196204-8">)</span><span class="p">,</span><span class="w">
+  </span><span class="ss">:working</span><span class="w">
+</span><span class="p" data-group-id="9260196204-7">)</span><span class="w">
+
+</span><span class="c1"># 4. Send messages through the safe gate</span><span class="w">
+</span><span class="p" data-group-id="9260196204-9">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="c">_resp</span><span class="p" data-group-id="9260196204-9">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ExWaha</span><span class="o">.</span><span class="n">send_text</span><span class="p" data-group-id="9260196204-10">(</span><span class="n">account</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+20 100 123 4567&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hi!&quot;</span><span class="p" data-group-id="9260196204-10">)</span></code></pre><h2 id="architecture" class="section-heading"><a href="#architecture" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Architecture</span></h2><pre><code class="makeup elixir" translate="no"><span class="w">                       </span><span class="nc">ExWaha</span><span class="w"> </span><span class="p" data-group-id="7608708615-1">(</span><span class="n">facade</span><span class="p" data-group-id="7608708615-1">)</span><span class="w">
+                            </span><span class="err">│</span><span class="w">
+                       </span><span class="nc">SafeSend</span><span class="w"> </span><span class="p" data-group-id="7608708615-2">(</span><span class="n">gate</span><span class="p" data-group-id="7608708615-2">)</span><span class="w">
+                       </span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">
+        </span><span class="nc">Session.Server</span><span class="w"> </span><span class="p" data-group-id="7608708615-3">(</span><span class="n">per</span><span class="w"> </span><span class="n">acct</span><span class="p" data-group-id="7608708615-3">)</span><span class="w">  </span><span class="err">└</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="w"> </span><span class="p" data-group-id="7608708615-4">(</span><span class="n">no</span><span class="w"> </span><span class="ss">server</span><span class="p">:</span><span class="w"> </span><span class="n">bypass</span><span class="p" data-group-id="7608708615-4">)</span><span class="w">
+        </span><span class="err">├</span><span class="w"> </span><span class="n">token</span><span class="w"> </span><span class="n">bucket</span><span class="w">
+        </span><span class="err">├</span><span class="w"> </span><span class="n">warmup</span><span class="w"> </span><span class="n">curve</span><span class="w">
+        </span><span class="err">├</span><span class="w"> </span><span class="n">jitter</span><span class="w">
+        </span><span class="err">└</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="n">state</span><span class="w">
+                            </span><span class="err">│</span><span class="w">
+                    </span><span class="nc">Provider</span><span class="w"> </span><span class="p" data-group-id="7608708615-5">(</span><span class="n">behaviour</span><span class="p" data-group-id="7608708615-5">)</span><span class="w">
+                  </span><span class="err">┌</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">┴</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">┐</span><span class="w">
+        </span><span class="nc">Providers.Waha</span><span class="w">           </span><span class="nc">Providers.Meta</span><span class="w">
+              </span><span class="err">│</span><span class="w">                          </span><span class="err">│</span><span class="w">
+        </span><span class="nc">Api</span><span class="o">.</span><span class="o">*</span><span class="w"> </span><span class="n">modules</span><span class="w">              </span><span class="nc">Cloud</span><span class="w"> </span><span class="nc">API</span><span class="w"> </span><span class="n">calls</span><span class="w">
+              </span><span class="err">│</span><span class="w">                          </span><span class="err">│</span><span class="w">
+                  </span><span class="nc">Client</span><span class="w"> </span><span class="p" data-group-id="7608708615-6">(</span><span class="n">behaviour</span><span class="p" data-group-id="7608708615-6">)</span><span class="w">
+                  </span><span class="err">├</span><span class="w"> </span><span class="nc">Client.Req</span><span class="w"> </span><span class="p" data-group-id="7608708615-7">(</span><span class="n">default</span><span class="p" data-group-id="7608708615-7">)</span><span class="w">
+                  </span><span class="err">└</span><span class="w"> </span><span class="nc">ClientMock</span><span class="w">  </span><span class="p" data-group-id="7608708615-8">(</span><span class="n">test</span><span class="p" data-group-id="7608708615-8">)</span></code></pre><p>The OTP layer is <strong>opt-in</strong>. Calls without a registered <code class="inline">Session.Server</code>
+fall through to the raw HTTP client, useful for tests and one-off scripts.</p><h2 id="two-providers-one-api" class="section-heading"><a href="#two-providers-one-api" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Two providers, one API</span></h2><pre><code class="makeup elixir" translate="no"><span class="c1"># Self-hosted WAHA</span><span class="w">
+</span><span class="n">waha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ExWaha.Providers.Waha.Account</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="4466625254-1">(</span><span class="n">instance</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;profile_42&quot;</span><span class="p" data-group-id="4466625254-1">)</span><span class="w">
+</span><span class="nc">ExWaha</span><span class="o">.</span><span class="n">send_text</span><span class="p" data-group-id="4466625254-2">(</span><span class="n">waha</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+201001234567&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;via WAHA&quot;</span><span class="p" data-group-id="4466625254-2">)</span><span class="w">
+
+</span><span class="c1"># Meta Cloud API</span><span class="w">
+</span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w">
+  </span><span class="nc">ExWaha.Providers.Meta.Account</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="4466625254-3">(</span><span class="w">
+    </span><span class="ss">phone_number_id</span><span class="p">:</span><span class="w"> </span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="4466625254-4">(</span><span class="s">&quot;META_PHONE_NUMBER_ID&quot;</span><span class="p" data-group-id="4466625254-4">)</span><span class="p">,</span><span class="w">
+    </span><span class="ss">access_token</span><span class="p">:</span><span class="w">    </span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="4466625254-5">(</span><span class="s">&quot;META_ACCESS_TOKEN&quot;</span><span class="p" data-group-id="4466625254-5">)</span><span class="p">,</span><span class="w">
+    </span><span class="ss">app_secret</span><span class="p">:</span><span class="w">      </span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="4466625254-6">(</span><span class="s">&quot;META_APP_SECRET&quot;</span><span class="p" data-group-id="4466625254-6">)</span><span class="w">
+  </span><span class="p" data-group-id="4466625254-3">)</span><span class="w">
+
+</span><span class="nc">ExWaha</span><span class="o">.</span><span class="n">send_text</span><span class="p" data-group-id="4466625254-7">(</span><span class="n">meta</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+201001234567&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;via Meta&quot;</span><span class="p" data-group-id="4466625254-7">)</span><span class="w">
+</span><span class="nc">ExWaha</span><span class="o">.</span><span class="n">send_template</span><span class="p" data-group-id="4466625254-8">(</span><span class="n">meta</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+201001234567&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello_world&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">language</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;en_US&quot;</span><span class="p" data-group-id="4466625254-8">)</span></code></pre><h2 id="multi-tenancy" class="section-heading"><a href="#multi-tenancy" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Multi-tenancy</span></h2><p>ExWaha owns no persistence. Your application maps <code class="inline">profile_id</code> → account in
+its own database. The recommended convention is a deterministic session name:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Whatsapp</span><span class="w"> </span><span class="k" data-group-id="4641048295-1">do</span><span class="w">
+  </span><span class="kn">alias</span><span class="w"> </span><span class="nc">ExWaha</span><span class="o">.</span><span class="p" data-group-id="4641048295-2">{</span><span class="nc">Instance</span><span class="p">,</span><span class="w"> </span><span class="nc">Providers.Waha.Account</span><span class="p" data-group-id="4641048295-2">}</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">account_for</span><span class="p" data-group-id="4641048295-3">(</span><span class="n">profile_id</span><span class="p" data-group-id="4641048295-3">)</span><span class="w"> </span><span class="k" data-group-id="4641048295-4">do</span><span class="w">
+    </span><span class="nc">Account</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="4641048295-5">(</span><span class="w">
+      </span><span class="nc">Instance</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="4641048295-6">(</span><span class="ss">base_url</span><span class="p">:</span><span class="w"> </span><span class="n">waha_base_url</span><span class="p" data-group-id="4641048295-7">(</span><span class="p" data-group-id="4641048295-7">)</span><span class="p">,</span><span class="w"> </span><span class="ss">api_key</span><span class="p">:</span><span class="w"> </span><span class="n">waha_api_key</span><span class="p" data-group-id="4641048295-8">(</span><span class="p" data-group-id="4641048295-8">)</span><span class="p" data-group-id="4641048295-6">)</span><span class="p">,</span><span class="w">
+      </span><span class="s">&quot;profile_</span><span class="si" data-group-id="4641048295-9">#{</span><span class="n">profile_id</span><span class="si" data-group-id="4641048295-9">}</span><span class="s">&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">webhook_secret</span><span class="p">:</span><span class="w"> </span><span class="n">waha_webhook_secret</span><span class="p" data-group-id="4641048295-10">(</span><span class="p" data-group-id="4641048295-10">)</span><span class="w">
+    </span><span class="p" data-group-id="4641048295-5">)</span><span class="w">
+  </span><span class="k" data-group-id="4641048295-4">end</span><span class="w">
+</span><span class="k" data-group-id="4641048295-1">end</span></code></pre><p>For per-tenant WAHA instances (different servers per customer), look up the
+URL/key from your <code class="inline">instances</code> table inside <code class="inline">account_for/1</code>.</p><p>See <a href="multi_tenancy.html">Multi-tenancy guide</a>.</p><h2 id="receiving-webhooks" class="section-heading"><a href="#receiving-webhooks" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Receiving webhooks</span></h2><p>If you're on Phoenix, use <a href="https://hexdocs.pm/ex_waha_phoenix"><code class="inline">ExWahaPhoenix.WebhookPlug</code></a>.
+For other transports, call <a href="ExWaha.Webhooks.Handler.html#dispatch/3"><code class="inline">ExWaha.Webhooks.Handler.dispatch/3</code></a> from your
+controller.</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Whatsapp.Handler</span><span class="w"> </span><span class="k" data-group-id="7795222536-1">do</span><span class="w">
+  </span><span class="na">@behaviour</span><span class="w"> </span><span class="nc">ExWaha.Webhooks.Handler</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_event</span><span class="p" data-group-id="7795222536-2">(</span><span class="p" data-group-id="7795222536-3">%</span><span class="nc" data-group-id="7795222536-3">ExWaha.Webhooks.Event</span><span class="p" data-group-id="7795222536-3">{</span><span class="ss">kind</span><span class="p">:</span><span class="w"> </span><span class="ss">:message</span><span class="p" data-group-id="7795222536-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">event</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="p" data-group-id="7795222536-2">)</span><span class="w"> </span><span class="k" data-group-id="7795222536-4">do</span><span class="w">
+    </span><span class="nc">Phoenix.PubSub</span><span class="o">.</span><span class="n">broadcast</span><span class="p" data-group-id="7795222536-5">(</span><span class="w">
+      </span><span class="nc">MyApp.PubSub</span><span class="p">,</span><span class="w">
+      </span><span class="s">&quot;whatsapp:</span><span class="si" data-group-id="7795222536-6">#{</span><span class="n">ctx</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">session</span><span class="si" data-group-id="7795222536-6">}</span><span class="s">&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="7795222536-7">{</span><span class="ss">:waha_message</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="p" data-group-id="7795222536-7">}</span><span class="w">
+    </span><span class="p" data-group-id="7795222536-5">)</span><span class="w">
+    </span><span class="ss">:ok</span><span class="w">
+  </span><span class="k" data-group-id="7795222536-4">end</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_event</span><span class="p" data-group-id="7795222536-8">(</span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="c">_ctx</span><span class="p" data-group-id="7795222536-8">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="ss">:ok</span><span class="w">
+</span><span class="k" data-group-id="7795222536-1">end</span></code></pre><p>See <a href="webhooks.html">Webhooks guide</a>.</p><h2 id="telemetry" class="section-heading"><a href="#telemetry" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Telemetry</span></h2><p>Every outbound call is wrapped in a <a href="https://hexdocs.pm/telemetry/1.4.1/telemetry.html#span/3"><code class="inline">:telemetry.span/3</code></a>. Subscribe with the
+standard machinery — no per-app integration needed.</p><pre><code class="makeup elixir" translate="no"><span class="nc">:telemetry</span><span class="o">.</span><span class="n">attach_many</span><span class="p" data-group-id="4643983699-1">(</span><span class="w">
+  </span><span class="s">&quot;ex-waha-logger&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="p" data-group-id="4643983699-2">[</span><span class="w">
+    </span><span class="p" data-group-id="4643983699-3">[</span><span class="ss">:ex_waha</span><span class="p">,</span><span class="w"> </span><span class="ss">:request</span><span class="p">,</span><span class="w"> </span><span class="ss">:stop</span><span class="p" data-group-id="4643983699-3">]</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="4643983699-4">[</span><span class="ss">:ex_waha</span><span class="p">,</span><span class="w"> </span><span class="ss">:rate_limit</span><span class="p">,</span><span class="w"> </span><span class="ss">:throttled</span><span class="p" data-group-id="4643983699-4">]</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="4643983699-5">[</span><span class="ss">:ex_waha</span><span class="p">,</span><span class="w"> </span><span class="ss">:session</span><span class="p">,</span><span class="w"> </span><span class="ss">:status_changed</span><span class="p" data-group-id="4643983699-5">]</span><span class="w">
+  </span><span class="p" data-group-id="4643983699-2">]</span><span class="p">,</span><span class="w">
+  </span><span class="o">&amp;</span><span class="nc">MyApp.Telemetry</span><span class="o">.</span><span class="n">handle_event</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="no">nil</span><span class="w">
+</span><span class="p" data-group-id="4643983699-1">)</span></code></pre><p>See <a href="telemetry.html">Telemetry events</a> for the full list.</p><h2 id="documentation" class="section-heading"><a href="#documentation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Documentation</span></h2><ul><li><a href="getting_started.html">Getting started</a></li><li><a href="multi_tenancy.html">Multi-tenancy</a></li><li><a href="safety_and_bans.html">Safety and bans</a></li><li><a href="webhooks.html">Webhooks</a></li><li><a href="providers.html">Providers (WAHA &amp; Meta)</a></li><li><a href="telemetry.html">Telemetry events</a></li></ul><h2 id="license" class="section-heading"><a href="#license" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">License</span></h2><p>MIT. See the LICENSE file included in the package.</p>
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="changelog.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Changelog
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/ex_waha/0.1.0">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/ex_waha/0.1.0">Hex Preview</a>
+
+                (<a href="https://preview.hex.pm/preview/ex_waha/0.1.0/show/README.md">current file</a>)
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="llms.txt" target="_blank">
+                View llms.txt
+              </a>
+
+
+              <a href="ExWaha.epub">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.40.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

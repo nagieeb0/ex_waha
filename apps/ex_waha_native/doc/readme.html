@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.40.1">
+    <meta name="project" content="ExWahaNative v0.2.0">
+
+
+    <title>ExWahaNative — ExWahaNative v0.2.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
+
+    <script defer src="dist/sidebar_items-315D70A3.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-YU4BZFVS.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+ExWahaNative
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.2.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras="Pages"></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ExWahaNative</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>ExWahaNative</h1>
+
+<a href="readme.md" title="Copy Markdown (hold Ctrl/Cmd and click it to open as Markdown)" class="copy-markdown icon-action" rel="help">
+  <i class="ri-markdown-line" aria-hidden="true"></i>
+  <span class="sr-only">Copy Markdown</span>
+</a>
+
+
+      <a href="https://github.com/nagieeb/ex_waha/blob/v0.2.0/README.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+<p><a href="https://hex.pm/packages/ex_waha_native"><img src="https://img.shields.io/hexpm/v/ex_waha_native.svg" alt="Hex.pm"/></a>
+<a href="https://hexdocs.pm/ex_waha_native"><img src="https://img.shields.io/badge/hex-docs-lightgreen.svg" alt="Documentation"/></a></p><p>Native <a href="https://hex.pm/packages/ex_waha"><code class="inline">ex_waha</code></a> provider that talks the
+WhatsApp Multi-Device protocol directly via <a href="https://github.com/tulir/whatsmeow"><code class="inline">whatsmeow</code></a>
+(Go), running as a single supervised sidecar process inside your BEAM node.
+<strong>No WAHA Docker container required.</strong></p><blockquote><p><strong>Status: 0.2.0 wires whatsmeow into the Go side.</strong> The bridge now opens
+real WhatsApp sessions through <code class="inline">go.mau.fi/whatsmeow</code>, supports QR pairing
+and phone pairing codes, sends text, emits <code class="inline">qr</code> / <code class="inline">paired</code> / <code class="inline">connected</code>
+/ <code class="inline">message</code> / <code class="inline">message_ack</code> events, and persists devices in SQLite. See
+the <a href="#roadmap">Roadmap</a> for what's next.</p></blockquote><h2 id="why-this-exists" class="section-heading"><a href="#why-this-exists" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Why this exists</span></h2><p><code class="inline">:ex_waha</code> (the wrapper) requires running the WAHA Docker container as a
+sidecar. That works but means an extra service to deploy, monitor, and
+restart. <code class="inline">:ex_waha_native</code> replaces WAHA with a Go binary in your release's
+<code class="inline">priv/</code> directory:</p><pre><code class="makeup elixir" translate="no"><span class="n">your_app</span><span class="w"> </span><span class="n">release</span><span class="w">
+</span><span class="err">└</span><span class="err">─</span><span class="err">─</span><span class="w"> </span><span class="n">priv</span><span class="o">/</span><span class="w">
+    </span><span class="err">└</span><span class="err">─</span><span class="err">─</span><span class="w"> </span><span class="n">ex_waha_native</span><span class="o">/</span><span class="w">
+        </span><span class="err">└</span><span class="err">─</span><span class="err">─</span><span class="w"> </span><span class="n">native</span><span class="o">/</span><span class="w">
+            </span><span class="err">└</span><span class="err">─</span><span class="err">─</span><span class="w"> </span><span class="n">whatsmeow_bridge</span><span class="w">          </span><span class="c1"># statically-linked Go binary</span><span class="w">
+                                           </span><span class="c1"># one process per BEAM node</span></code></pre><p>One binary, no HTTP, no Docker. Sessions live in SQLite (per session) or
+Postgres (shared) via whatsmeow's sqlstore.</p><h2 id="installation" class="section-heading"><a href="#installation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Installation</span></h2><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">deps</span><span class="w"> </span><span class="k" data-group-id="0206499623-1">do</span><span class="w">
+  </span><span class="p" data-group-id="0206499623-2">[</span><span class="w">
+    </span><span class="p" data-group-id="0206499623-3">{</span><span class="ss">:ex_waha</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.1.0&quot;</span><span class="p" data-group-id="0206499623-3">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="0206499623-4">{</span><span class="ss">:ex_waha_native</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.1.0&quot;</span><span class="p" data-group-id="0206499623-4">}</span><span class="w">
+  </span><span class="p" data-group-id="0206499623-2">]</span><span class="w">
+</span><span class="k" data-group-id="0206499623-1">end</span></code></pre><p>You also need the <strong>Go toolchain</strong> (≥ 1.21) on the build machine. After
+<a href="https://hexdocs.pm/mix/Mix.Tasks.Deps.Get.html"><code class="inline">mix deps.get</code></a>:</p><pre><code class="makeup bash" translate="no"><span class="">mix ex_waha_native.build_native
+</span></code></pre><p>This compiles <code class="inline">native/bridge/*.go</code> to <code class="inline">priv/native/whatsmeow_bridge</code>.
+Cross-compile for your deploy target with <code class="inline">--target linux/amd64</code>.</p><h2 id="usage" class="section-heading"><a href="#usage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Usage</span></h2><pre><code class="makeup elixir" translate="no"><span class="c1"># Tell the application to start the bridge GenServer</span><span class="w">
+</span><span class="n">config</span><span class="w"> </span><span class="ss">:ex_waha_native</span><span class="p">,</span><span class="w"> </span><span class="ss">start_bridge</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+
+</span><span class="c1"># Build an account</span><span class="w">
+</span><span class="n">account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="6185106095-1">%</span><span class="nc" data-group-id="6185106095-1">ExWahaNative.Account</span><span class="p" data-group-id="6185106095-1">{</span><span class="w">
+  </span><span class="ss">session</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;profile_42&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">store</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6185106095-2">{</span><span class="ss">:sqlite</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;priv/sessions/profile_42.db&quot;</span><span class="p" data-group-id="6185106095-2">}</span><span class="p">,</span><span class="w">
+  </span><span class="ss">bridge</span><span class="p">:</span><span class="w"> </span><span class="nc">ExWahaNative.Bridge</span><span class="w">
+</span><span class="p" data-group-id="6185106095-1">}</span><span class="w">
+
+</span><span class="c1"># Bring under supervision (spawns the whatsmeow client, emits QR via event)</span><span class="w">
+</span><span class="p" data-group-id="6185106095-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="c">_pid</span><span class="p" data-group-id="6185106095-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ExWahaNative.Session.Supervisor</span><span class="o">.</span><span class="n">ensure_started</span><span class="p" data-group-id="6185106095-4">(</span><span class="n">account</span><span class="p" data-group-id="6185106095-4">)</span><span class="w">
+
+</span><span class="c1"># Subscribe to events for this session</span><span class="w">
+</span><span class="nc">ExWahaNative.Session</span><span class="o">.</span><span class="n">subscribe</span><span class="p" data-group-id="6185106095-5">(</span><span class="n">account</span><span class="p" data-group-id="6185106095-5">)</span><span class="w">
+
+</span><span class="c1"># First time: render the QR. Subsequent runs reconnect from sqlstore.</span><span class="w">
+</span><span class="k">receive</span><span class="w"> </span><span class="k" data-group-id="6185106095-6">do</span><span class="w">
+  </span><span class="p" data-group-id="6185106095-7">{</span><span class="ss">:ex_waha_native</span><span class="p">,</span><span class="w"> </span><span class="ss">:qr</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6185106095-8">%{</span><span class="s">&quot;code&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">code</span><span class="p" data-group-id="6185106095-8">}</span><span class="p" data-group-id="6185106095-7">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">render_qr</span><span class="p" data-group-id="6185106095-9">(</span><span class="n">code</span><span class="p" data-group-id="6185106095-9">)</span><span class="w">
+</span><span class="k" data-group-id="6185106095-6">end</span><span class="w">
+
+</span><span class="k">receive</span><span class="w"> </span><span class="k" data-group-id="6185106095-10">do</span><span class="w">
+  </span><span class="p" data-group-id="6185106095-11">{</span><span class="ss">:ex_waha_native</span><span class="p">,</span><span class="w"> </span><span class="ss">:paired</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6185106095-12">%{</span><span class="s">&quot;phone&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">phone</span><span class="p" data-group-id="6185106095-12">}</span><span class="p" data-group-id="6185106095-11">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="6185106095-13">(</span><span class="s">&quot;paired as </span><span class="si" data-group-id="6185106095-14">#{</span><span class="n">phone</span><span class="si" data-group-id="6185106095-14">}</span><span class="s">&quot;</span><span class="p" data-group-id="6185106095-13">)</span><span class="w">
+</span><span class="k" data-group-id="6185106095-10">end</span><span class="w">
+
+</span><span class="c1"># Same facade as the WAHA / Meta providers</span><span class="w">
+</span><span class="nc">ExWaha</span><span class="o">.</span><span class="n">send_text</span><span class="p" data-group-id="6185106095-15">(</span><span class="n">account</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+201001234567&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello!&quot;</span><span class="p" data-group-id="6185106095-15">)</span></code></pre><h3 id="phone-pairing-code-no-qr-scanner" class="section-heading"><a href="#phone-pairing-code-no-qr-scanner" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Phone pairing code (no QR scanner)</span></h3><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="9723965280-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ABCD-EFGH&quot;</span><span class="p" data-group-id="9723965280-1">}</span><span class="w"> </span><span class="o">=</span><span class="w">
+  </span><span class="nc">ExWahaNative.Session</span><span class="o">.</span><span class="n">request_pairing_code</span><span class="p" data-group-id="9723965280-2">(</span><span class="n">account</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+201001234567&quot;</span><span class="p" data-group-id="9723965280-2">)</span><span class="w">
+</span><span class="c1"># Enter the code on the WhatsApp app: Linked Devices -&gt; Link with phone number.</span></code></pre><h3 id="polling-status-latest-qr" class="section-heading"><a href="#polling-status-latest-qr" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Polling status / latest QR</span></h3><pre><code class="makeup elixir" translate="no"><span class="ss">:scan_qr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ExWahaNative.Session</span><span class="o">.</span><span class="n">status</span><span class="p" data-group-id="8269581674-1">(</span><span class="n">account</span><span class="p" data-group-id="8269581674-1">)</span><span class="w">
+</span><span class="s">&quot;2@...&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ExWahaNative.Session</span><span class="o">.</span><span class="n">qr</span><span class="p" data-group-id="8269581674-2">(</span><span class="n">account</span><span class="p" data-group-id="8269581674-2">)</span></code></pre><h3 id="logging-out-stopping" class="section-heading"><a href="#logging-out-stopping" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Logging out / stopping</span></h3><pre><code class="makeup elixir" translate="no"><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ExWahaNative.Session</span><span class="o">.</span><span class="n">logout</span><span class="p" data-group-id="6627113930-1">(</span><span class="n">account</span><span class="p" data-group-id="6627113930-1">)</span><span class="w">   </span><span class="c1"># invalidates the WhatsApp pairing</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ExWahaNative.Session</span><span class="o">.</span><span class="n">stop</span><span class="p" data-group-id="6627113930-2">(</span><span class="n">account</span><span class="p" data-group-id="6627113930-2">)</span><span class="w">     </span><span class="c1"># local-only close, can resume</span></code></pre><h2 id="architecture" class="section-heading"><a href="#architecture" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Architecture</span></h2><pre><code class="makeup elixir" translate="no"><span class="err">┌</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">┐</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="nc">Elixir</span><span class="w"> </span><span class="n">host</span><span class="w"> </span><span class="n">application</span><span class="w">                             </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">                                                      </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="nc">ExWaha</span><span class="o">.</span><span class="n">send_text</span><span class="p" data-group-id="4305920383-1">(</span><span class="n">native_account</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="4305920383-1">)</span><span class="w">               </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">                                          </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">           </span><span class="err">▼</span><span class="w">                                          </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="nc">ExWaha.Provider</span><span class="w"> </span><span class="n">dispatch</span><span class="w"> </span><span class="p" data-group-id="4305920383-2">(</span><span class="n">registry</span><span class="p">,</span><span class="w"> </span><span class="n">runtime</span><span class="p" data-group-id="4305920383-2">)</span><span class="w">        </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">                                          </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">           </span><span class="err">▼</span><span class="w">                                          </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="nc">ExWahaNative.Provider</span><span class="w">                               </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">                                          </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">           </span><span class="err">▼</span><span class="w">                                          </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="nc">ExWahaNative.SessionSupervisor</span><span class="w">                      </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="w"> </span><span class="nc">Session</span><span class="w"> </span><span class="n">profile_42</span><span class="w"> </span><span class="p" data-group-id="4305920383-3">(</span><span class="nc">GenServer</span><span class="p" data-group-id="4305920383-3">)</span><span class="w">                    </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">├</span><span class="w"> </span><span class="nc">Session</span><span class="w"> </span><span class="n">profile_43</span><span class="w">                                </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">└</span><span class="w"> </span><span class="n">...</span><span class="w">                                               </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">                                          </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">           </span><span class="err">▼</span><span class="w">                                          </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="nc">ExWahaNative.Bridge</span><span class="w"> </span><span class="p" data-group-id="4305920383-4">(</span><span class="nc">Port</span><span class="w"> </span><span class="nc">GenServer</span><span class="p" data-group-id="4305920383-4">)</span><span class="w">                </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">   </span><span class="n">length</span><span class="o">-</span><span class="n">prefixed</span><span class="w"> </span><span class="nc">JSON</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">stdio</span><span class="w">                    </span><span class="err">│</span><span class="w">
+</span><span class="err">└</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">┬</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">┘</span><span class="w">
+                      </span><span class="err">│</span><span class="w"> </span><span class="nc">Port</span><span class="w"> </span><span class="p" data-group-id="4305920383-5">(</span><span class="n">stdin</span><span class="o">/</span><span class="n">stdout</span><span class="p" data-group-id="4305920383-5">)</span><span class="w">
+                      </span><span class="err">▼</span><span class="w">
+</span><span class="err">┌</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">┐</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="n">priv</span><span class="o">/</span><span class="n">native</span><span class="o">/</span><span class="n">whatsmeow_bridge</span><span class="w"> </span><span class="p" data-group-id="4305920383-6">(</span><span class="nc">Go</span><span class="w"> </span><span class="n">binary</span><span class="p" data-group-id="4305920383-6">)</span><span class="w">            </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">                                                      </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">tulir</span><span class="o">/</span><span class="n">whatsmeow</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="n">per</span><span class="w"> </span><span class="n">session</span><span class="w">                </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">sqlstore</span><span class="w"> </span><span class="p" data-group-id="4305920383-7">(</span><span class="nc">SQLite</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nc">Postgres</span><span class="p" data-group-id="4305920383-7">)</span><span class="w">                     </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="n">loop</span><span class="w"> </span><span class="n">fans</span><span class="w"> </span><span class="n">events</span><span class="w"> </span><span class="n">back</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="nc">Elixir</span><span class="w">             </span><span class="err">│</span><span class="w">
+</span><span class="err">└</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">┬</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">─</span><span class="err">┘</span><span class="w">
+                      </span><span class="err">│</span><span class="w"> </span><span class="nc">WhatsApp</span><span class="w"> </span><span class="nc">Multi</span><span class="o">-</span><span class="nc">Device</span><span class="w"> </span><span class="n">protocol</span><span class="w">
+                      </span><span class="err">▼</span><span class="w">
+                 </span><span class="nc">WhatsApp</span><span class="w"> </span><span class="n">servers</span></code></pre><h3 id="process-model" class="section-heading"><a href="#process-model" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Process model</span></h3><ul><li><strong>One Go process per BEAM node</strong>, multiplexed by <code class="inline">session</code> field.
+Memory-efficient; mirrors how <code class="inline">whatsmeow</code> itself is designed.</li><li><strong>One Elixir <code class="inline">Session</code> GenServer per WhatsApp account.</strong> Owns subscriber
+list, current status, last QR.</li><li><strong>One <code class="inline">Bridge</code> GenServer.</strong> Owns the <a href="https://hexdocs.pm/elixir/Port.html"><code class="inline">Port</code></a>, correlates request/response
+refs, routes async events to the right <code class="inline">Session</code>.</li></ul><h3 id="crash-semantics" class="section-heading"><a href="#crash-semantics" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Crash semantics</span></h3><p>If the Go process dies:</p><ol><li>The Port closes; <code class="inline">Bridge</code> exits with <code class="inline">{:bridge_exit, status}</code>.</li><li><code class="inline">ExWahaNative.Supervisor</code> (one_for_one) restarts <code class="inline">Bridge</code>.</li><li>The Go binary re-spawns and re-loads sessions from sqlstore.</li><li>In-flight requests get <code class="inline">{:error, :bridge_exited}</code>.</li><li><code class="inline">Session</code> GenServers stay alive — they re-establish via subsequent
+calls.</li></ol><p>If a single <code class="inline">Session</code> crashes, only that session is affected; the Bridge
+and other Sessions continue.</p><h2 id="wire-protocol" class="section-heading"><a href="#wire-protocol" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Wire protocol</span></h2><p>Length-prefixed JSON. See <a href="ExWahaNative.Wire.html"><code class="inline">ExWahaNative.Wire</code></a> for the canonical reference.</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="7371141959-1">[</span><span class="mi">4</span><span class="o">-</span><span class="n">byte</span><span class="w"> </span><span class="n">big</span><span class="o">-</span><span class="n">endian</span><span class="w"> </span><span class="n">length</span><span class="p" data-group-id="7371141959-1">]</span><span class="p" data-group-id="7371141959-2">[</span><span class="nc">UTF</span><span class="o">-</span><span class="mi">8</span><span class="w"> </span><span class="nc">JSON</span><span class="w"> </span><span class="n">body</span><span class="p" data-group-id="7371141959-2">]</span></code></pre><p>Three message kinds:</p><pre><code class="json">// Elixir -&gt; Go
+{&quot;type&quot;:&quot;request&quot;, &quot;ref&quot;:&quot;&lt;uuid&gt;&quot;, &quot;session&quot;:&quot;profile_42&quot;,
+ &quot;op&quot;:&quot;send_text&quot;, &quot;args&quot;:{&quot;to&quot;:&quot;201001234567@s.whatsapp.net&quot;, &quot;text&quot;:&quot;hi&quot;}}
+
+// Go -&gt; Elixir, correlated
+{&quot;type&quot;:&quot;response&quot;, &quot;ref&quot;:&quot;&lt;uuid&gt;&quot;, &quot;ok&quot;:true, &quot;result&quot;:{&quot;id&quot;:&quot;3EB0...&quot;}}
+
+// Go -&gt; Elixir, async
+{&quot;type&quot;:&quot;event&quot;, &quot;session&quot;:&quot;profile_42&quot;, &quot;kind&quot;:&quot;message&quot;,
+ &quot;payload&quot;:{&quot;from&quot;:&quot;201001234567@s.whatsapp.net&quot;, &quot;body&quot;:&quot;hello&quot;}}</code></pre><h2 id="building-the-go-binary" class="section-heading"><a href="#building-the-go-binary" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Building the Go binary</span></h2><p>The <a href="Mix.Tasks.ExWahaNative.BuildNative.html"><code class="inline">mix ex_waha_native.build_native</code></a> task wraps <code class="inline">go build</code>:</p><pre><code class="makeup bash" translate="no"><span class=""># Native build
+</span><span class="">mix ex_waha_native.build_native
+</span><span class="">
+</span><span class=""># Cross-compile for production
+</span><span class="">mix ex_waha_native.build_native --target linux/amd64
+</span><span class="">mix ex_waha_native.build_native --target darwin/arm64
+</span></code></pre><p>Output lands in <code class="inline">priv/native/whatsmeow_bridge</code>. Add this path to your
+release:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># rel/overlays/... or include in :files for the package</span></code></pre><p>Pre-built binaries for common targets will ship via GitHub releases once
+the project is past 0.1.0.</p><h2 id="roadmap" class="section-heading"><a href="#roadmap" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Roadmap</span></h2><table><thead><tr><th style="text-align: left;">Version</th><th style="text-align: left;">Scope</th></tr></thead><tbody><tr><td style="text-align: left;"><strong>0.1.0</strong></td><td style="text-align: left;">Architecture: supervision tree, wire protocol, Elixir Bridge &amp; Session GenServers, mix task, Go skeleton with <code class="inline">ping</code> op + stub handlers</td></tr><tr><td style="text-align: left;"><strong>0.2.0</strong> (current)</td><td style="text-align: left;">whatsmeow integration in Go: <code class="inline">open_session</code>, QR + phone-code pairing, <code class="inline">send_text</code>, <code class="inline">logout</code>, message + receipt + connection events</td></tr><tr><td style="text-align: left;"><strong>0.3.0</strong></td><td style="text-align: left;">Media (<code class="inline">send_image</code>, <code class="inline">send_video</code>, <code class="inline">send_document</code>, <code class="inline">send_audio</code>); presence and typing events</td></tr><tr><td style="text-align: left;"><strong>0.4.0</strong></td><td style="text-align: left;">Group operations; multi-device sync; history sync</td></tr><tr><td style="text-align: left;"><strong>0.5.0</strong></td><td style="text-align: left;">Postgres sqlstore for multi-node BEAM clusters; session migration</td></tr><tr><td style="text-align: left;"><strong>0.6.0</strong></td><td style="text-align: left;">Pre-built binary distribution via GitHub releases (no Go toolchain required for users)</td></tr></tbody></table><h2 id="license" class="section-heading"><a href="#license" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">License</span></h2><p>MIT for the Elixir code. See the LICENSE file. The Go bridge depends on
+<a href="https://github.com/tulir/whatsmeow">whatsmeow</a> which is <strong>MPL-2.0</strong> —
+review their license before redistributing the compiled binary.</p><h2 id="disclaimer" class="section-heading"><a href="#disclaimer" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Disclaimer</span></h2><p>WhatsApp's Terms of Service do not permit unofficial clients. Using
+<code class="inline">whatsmeow</code> (and therefore this package) on a production WhatsApp account
+carries real risk of account ban. Read
+<a href="https://hexdocs.pm/ex_waha/safety_and_bans.html"><code class="inline">ex_waha</code>'s safety guide</a>
+before going to production. For commercial use cases consider Meta's
+official Cloud API via <a href="https://hexdocs.pm/ex_waha/0.1.0/ExWaha.Providers.Meta.html"><code class="inline">ExWaha.Providers.Meta</code></a>.</p>
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="changelog.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Changelog
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/ex_waha_native/0.2.0">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/ex_waha_native/0.2.0">Hex Preview</a>
+
+                (<a href="https://preview.hex.pm/preview/ex_waha_native/0.2.0/show/README.md">current file</a>)
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="llms.txt" target="_blank">
+                View llms.txt
+              </a>
+
+
+              <a href="ExWahaNative.epub">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.40.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

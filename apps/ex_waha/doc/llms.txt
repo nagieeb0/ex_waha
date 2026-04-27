@@ -1,0 +1,65 @@
+# ExWaha v0.1.0 - Table of Contents
+
+WhatsApp client for Elixir — supports WAHA (self-hosted) and Meta Cloud API.
+
+## Pages
+
+- [ExWaha](readme.md)
+- [Changelog](changelog.md)
+
+- Guides
+  - [Getting started](getting_started.md)
+  - [Multi-tenancy](multi_tenancy.md)
+  - [Safety and bans](safety_and_bans.md)
+  - [Webhooks](webhooks.md)
+  - [Providers](providers.md)
+  - [Telemetry events](telemetry.md)
+
+## Modules
+
+- Public API
+  - [ExWaha](ExWaha.md): Public facade for the ex_waha library.
+  - [ExWaha.SafeSend](ExWaha.SafeSend.md): The single gate every outbound message must pass through.
+
+- Provider — WAHA
+  - [ExWaha.Instance](ExWaha.Instance.md): Configuration for a single WAHA server.
+  - [ExWaha.Providers.Waha](ExWaha.Providers.Waha.md): Provider implementation for self-hosted WAHA (https://waha.devlike.pro).
+  - [ExWaha.Providers.Waha.Account](ExWaha.Providers.Waha.Account.md): An account on a specific WAHA server.
+
+- Provider — Meta
+  - [ExWaha.Providers.Meta](ExWaha.Providers.Meta.md): Provider implementation for Meta's WhatsApp Business Cloud API.
+  - [ExWaha.Providers.Meta.Account](ExWaha.Providers.Meta.Account.md): An account on Meta's WhatsApp Business Cloud API.
+
+- WAHA REST API
+  - [ExWaha.Api.Auth](ExWaha.Api.Auth.md): Pairing endpoints — QR scan and SMS code request.
+  - [ExWaha.Api.Chats](ExWaha.Api.Chats.md): WAHA chat endpoints.
+  - [ExWaha.Api.Contacts](ExWaha.Api.Contacts.md): WAHA contact endpoints. Use `check_exists/2` BEFORE sending to unknowns.
+  - [ExWaha.Api.Groups](ExWaha.Api.Groups.md): WAHA group endpoints.
+  - [ExWaha.Api.Messages](ExWaha.Api.Messages.md): Message-sending endpoints for WAHA.
+  - [ExWaha.Api.Presence](ExWaha.Api.Presence.md): WAHA presence endpoints.
+  - [ExWaha.Api.Profile](ExWaha.Api.Profile.md): WAHA profile endpoints.
+  - [ExWaha.Api.Sessions](ExWaha.Api.Sessions.md): WAHA `/api/sessions` endpoints.
+
+- OTP &amp; Safety
+  - [ExWaha.Safety.RateLimiter](ExWaha.Safety.RateLimiter.md): Pure token-bucket rate limiter.
+  - [ExWaha.Safety.Warmup](ExWaha.Safety.Warmup.md): Account warmup curve.
+  - [ExWaha.Session.Registry](ExWaha.Session.Registry.md): Process registry for `ExWaha.Session.Server` instances.
+  - [ExWaha.Session.Server](ExWaha.Session.Server.md): Per-account state machine.
+  - [ExWaha.Session.Supervisor](ExWaha.Session.Supervisor.md): DynamicSupervisor for per-account `ExWaha.Session.Server` processes.
+
+- Webhooks
+  - [ExWaha.Webhooks.Event](ExWaha.Webhooks.Event.md): Normalized webhook event.
+  - [ExWaha.Webhooks.Handler](ExWaha.Webhooks.Handler.md): Behaviour host applications implement to receive normalized events.
+  - [ExWaha.Webhooks.Signature](ExWaha.Webhooks.Signature.md): HMAC signature verification for webhook payloads.
+
+- Behaviours
+  - [ExWaha.Client](ExWaha.Client.md): HTTP client behaviour. Implementations: `ExWaha.Client.Req` (default) and
+`ExWaha.ClientMock` (test only).
+  - [ExWaha.Provider](ExWaha.Provider.md): Behaviour every WhatsApp provider implements.
+
+- Internals
+  - [ExWaha.Client.Req](ExWaha.Client.Req.md): Default `ExWaha.Client` implementation backed by `Req`.
+  - [ExWaha.Error](ExWaha.Error.md): Normalized error returned by every ExWaha call.
+  - [ExWaha.Recipient](ExWaha.Recipient.md): Normalized recipient handle.
+  - [ExWaha.Telemetry](ExWaha.Telemetry.md): Telemetry event names emitted by ex_waha.
+

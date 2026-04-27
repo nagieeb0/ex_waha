@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.40.1">
+    <meta name="project" content="ExWahaPhoenix v0.1.0">
+
+
+    <title>Dashboard — ExWahaPhoenix v0.1.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
+
+    <script defer src="dist/sidebar_items-7120A12A.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-YU4BZFVS.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+ExWahaPhoenix
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras="Pages"></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ExWahaPhoenix</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>Dashboard</h1>
+
+<a href="dashboard.md" title="Copy Markdown (hold Ctrl/Cmd and click it to open as Markdown)" class="copy-markdown icon-action" rel="help">
+  <i class="ri-markdown-line" aria-hidden="true"></i>
+  <span class="sr-only">Copy Markdown</span>
+</a>
+
+
+      <a href="https://github.com/nagieeb/ex_waha/blob/v0.1.0/guides/dashboard.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+<p><a href="ExWahaPhoenix.Dashboard.html"><code class="inline">ExWahaPhoenix.Dashboard</code></a> is a mountable LiveView that gives you a
+LiveDashboard-style view of your WAHA sessions: status, paired number, QR
+scan modal, recent events, and a send-test form.</p><blockquote><p><strong>Status: skeleton in 0.1.0.</strong> The mountable module compiles and renders
+a placeholder. The full UI ships in 0.2.0; the contract below is what to
+expect.</p></blockquote><h2 id="mounting" class="section-heading"><a href="#mounting" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Mounting</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">scope</span><span class="w"> </span><span class="s">&quot;/admin&quot;</span><span class="p">,</span><span class="w"> </span><span class="nc">MyAppWeb</span><span class="w"> </span><span class="k" data-group-id="0964815297-1">do</span><span class="w">
+  </span><span class="n">pipe_through</span><span class="w"> </span><span class="p" data-group-id="0964815297-2">[</span><span class="ss">:browser</span><span class="p">,</span><span class="w"> </span><span class="ss">:require_admin</span><span class="p" data-group-id="0964815297-2">]</span><span class="w">
+  </span><span class="n">live</span><span class="w"> </span><span class="s">&quot;/whatsapp&quot;</span><span class="p">,</span><span class="w"> </span><span class="nc">ExWahaPhoenix.Dashboard</span><span class="p">,</span><span class="w"> </span><span class="ss">:index</span><span class="w">
+</span><span class="k" data-group-id="0964815297-1">end</span></code></pre><p>The dashboard has <strong>no built-in authentication</strong> — that's intentional.
+Always mount it under a pipeline that enforces who can see it. A leaked
+dashboard exposes per-tenant message history and lets viewers send messages.</p><h2 id="optional-dependency" class="section-heading"><a href="#optional-dependency" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Optional dependency</span></h2><p><code class="inline">:phoenix_live_view</code> is <code class="inline">optional: true</code> in the package — the module is
+defined inside an <code class="inline">if Code.ensure_loaded?(Phoenix.LiveView)</code> guard, so the
+package compiles cleanly in projects that don't have LiveView.</p><p>If you mount the dashboard, you must add LiveView as a direct dependency:</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="2608961565-1">{</span><span class="ss">:phoenix_live_view</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 1.0&quot;</span><span class="p" data-group-id="2608961565-1">}</span></code></pre><h2 id="planned-features" class="section-heading"><a href="#planned-features" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Planned features</span></h2><ul><li>Sessions table — live status (subscribes to <code class="inline">Session.Server</code> notifications)</li><li>QR pairing flow — modal that polls <code class="inline">Api.Auth.qr/2</code> until <code class="inline">:working</code></li><li>Per-account event stream — last N webhooks for debugging</li><li>Send-test form — validates and dispatches a real <code class="inline">send_text/4</code></li><li>Per-instance health check — pings each <code class="inline">%Instance{}</code> for version + uptime</li></ul><h2 id="customization" class="section-heading"><a href="#customization" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Customization</span></h2><p>Once the full version ships, you'll be able to override:</p><pre><code class="makeup elixir" translate="no"><span class="n">live</span><span class="w"> </span><span class="s">&quot;/whatsapp&quot;</span><span class="p">,</span><span class="w"> </span><span class="nc">ExWahaPhoenix.Dashboard</span><span class="p">,</span><span class="w"> </span><span class="ss">:index</span><span class="p">,</span><span class="w">
+  </span><span class="ss">session</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3548199192-1">%{</span><span class="w">
+    </span><span class="s">&quot;page_title&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;WhatsApp Admin&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s">&quot;accounts_for_user&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="3548199192-2">{</span><span class="nc">MyApp.Whatsapp</span><span class="p">,</span><span class="w"> </span><span class="ss">:list_accounts_for</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3548199192-3">[</span><span class="p" data-group-id="3548199192-3">]</span><span class="p" data-group-id="3548199192-2">}</span><span class="w">
+  </span><span class="p" data-group-id="3548199192-1">}</span></code></pre><p>Stay tuned.</p>
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="webhooks.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Webhook reference
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+  </div>
+</div>
+    <footer class="footer">
+
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/ex_waha_phoenix/0.1.0">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/ex_waha_phoenix/0.1.0">Hex Preview</a>
+
+                (<a href="https://preview.hex.pm/preview/ex_waha_phoenix/0.1.0/show/guides/dashboard.md">current file</a>)
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="llms.txt" target="_blank">
+                View llms.txt
+              </a>
+
+
+              <a href="ExWahaPhoenix.epub">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.40.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

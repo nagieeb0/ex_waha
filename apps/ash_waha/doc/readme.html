@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.40.1">
+    <meta name="project" content="AshWaha v0.1.0">
+
+
+    <title>AshWaha — AshWaha v0.1.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
+
+    <script defer src="dist/sidebar_items-AEB55859.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-YU4BZFVS.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+AshWaha
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras="Pages"></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of AshWaha</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>AshWaha</h1>
+
+<a href="readme.md" title="Copy Markdown (hold Ctrl/Cmd and click it to open as Markdown)" class="copy-markdown icon-action" rel="help">
+  <i class="ri-markdown-line" aria-hidden="true"></i>
+  <span class="sr-only">Copy Markdown</span>
+</a>
+
+
+      <a href="https://github.com/nagieeb/ex_waha/blob/v0.1.0/README.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+<p><a href="https://hex.pm/packages/ash_waha"><img src="https://img.shields.io/hexpm/v/ash_waha.svg" alt="Hex.pm"/></a>
+<a href="https://hexdocs.pm/ash_waha"><img src="https://img.shields.io/badge/hex-docs-lightgreen.svg" alt="Documentation"/></a></p><p><a href="https://ash-hq.org">Ash</a> extension for <a href="https://hex.pm/packages/ex_waha"><code class="inline">ex_waha</code></a>.
+Express WhatsApp behavior as resource DSL, with sends running inside Ash
+actions — so policies, validations, audit, and AshOban background jobs all
+just work.</p><blockquote><p><strong>Status: skeleton.</strong> The DSL section and one functional change
+(<a href="AshWaha.Changes.SendText.html"><code class="inline">AshWaha.Changes.SendText</code></a>) ship in 0.1.0. The transformer that
+auto-injects standard actions onto resources is planned for 0.2.0. For
+now, declare custom actions and add the change explicitly.</p></blockquote><h2 id="installation" class="section-heading"><a href="#installation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Installation</span></h2><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">deps</span><span class="w"> </span><span class="k" data-group-id="9727008244-1">do</span><span class="w">
+  </span><span class="p" data-group-id="9727008244-2">[</span><span class="w">
+    </span><span class="p" data-group-id="9727008244-3">{</span><span class="ss">:ash</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 3.4&quot;</span><span class="p" data-group-id="9727008244-3">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="9727008244-4">{</span><span class="ss">:ex_waha</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.1.0&quot;</span><span class="p" data-group-id="9727008244-4">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="9727008244-5">{</span><span class="ss">:ash_waha</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.1.0&quot;</span><span class="p" data-group-id="9727008244-5">}</span><span class="w">
+  </span><span class="p" data-group-id="9727008244-2">]</span><span class="w">
+</span><span class="k" data-group-id="9727008244-1">end</span></code></pre><h2 id="quick-example" class="section-heading"><a href="#quick-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Quick example</span></h2><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Whatsapp.Profile</span><span class="w"> </span><span class="k" data-group-id="6397307905-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Ash.Resource</span><span class="p">,</span><span class="w">
+    </span><span class="ss">domain</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Whatsapp</span><span class="p">,</span><span class="w">
+    </span><span class="ss">data_layer</span><span class="p">:</span><span class="w"> </span><span class="nc">AshPostgres.DataLayer</span><span class="p">,</span><span class="w">
+    </span><span class="ss">extensions</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6397307905-2">[</span><span class="nc">AshWaha</span><span class="p" data-group-id="6397307905-2">]</span><span class="w">
+
+  </span><span class="n">attributes</span><span class="w"> </span><span class="k" data-group-id="6397307905-3">do</span><span class="w">
+    </span><span class="n">uuid_primary_key</span><span class="w"> </span><span class="ss">:id</span><span class="w">
+    </span><span class="n">attribute</span><span class="w"> </span><span class="ss">:phone_number</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+  </span><span class="k" data-group-id="6397307905-3">end</span><span class="w">
+
+  </span><span class="n">whatsapp</span><span class="w"> </span><span class="k" data-group-id="6397307905-4">do</span><span class="w">
+    </span><span class="n">account</span><span class="w"> </span><span class="p" data-group-id="6397307905-5">{</span><span class="nc">MyApp.Whatsapp.Accounts</span><span class="p">,</span><span class="w"> </span><span class="ss">:for_profile</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6397307905-6">[</span><span class="p" data-group-id="6397307905-6">]</span><span class="p" data-group-id="6397307905-5">}</span><span class="w">
+  </span><span class="k" data-group-id="6397307905-4">end</span><span class="w">
+
+  </span><span class="n">actions</span><span class="w"> </span><span class="k" data-group-id="6397307905-7">do</span><span class="w">
+    </span><span class="n">defaults</span><span class="w"> </span><span class="p" data-group-id="6397307905-8">[</span><span class="ss">:read</span><span class="p" data-group-id="6397307905-8">]</span><span class="w">
+
+    </span><span class="n">update</span><span class="w"> </span><span class="ss">:send_welcome</span><span class="w"> </span><span class="k" data-group-id="6397307905-9">do</span><span class="w">
+      </span><span class="n">argument</span><span class="w"> </span><span class="ss">:greeting</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Welcome!&quot;</span><span class="w">
+      </span><span class="n">change</span><span class="w"> </span><span class="nc">AshWaha.Changes.SendText</span><span class="p">,</span><span class="w"> </span><span class="ss">text_arg</span><span class="p">:</span><span class="w"> </span><span class="ss">:greeting</span><span class="w">
+    </span><span class="k" data-group-id="6397307905-9">end</span><span class="w">
+
+    </span><span class="n">update</span><span class="w"> </span><span class="ss">:send_otp</span><span class="w"> </span><span class="k" data-group-id="6397307905-10">do</span><span class="w">
+      </span><span class="n">argument</span><span class="w"> </span><span class="ss">:code</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_nil?</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
+      </span><span class="n">change</span><span class="w"> </span><span class="nc">AshWaha.Changes.SendText</span><span class="p">,</span><span class="w"> </span><span class="ss">text_arg</span><span class="p">:</span><span class="w"> </span><span class="ss">:code</span><span class="w">
+    </span><span class="k" data-group-id="6397307905-10">end</span><span class="w">
+  </span><span class="k" data-group-id="6397307905-7">end</span><span class="w">
+
+  </span><span class="n">policies</span><span class="w"> </span><span class="k" data-group-id="6397307905-11">do</span><span class="w">
+    </span><span class="n">policy</span><span class="w"> </span><span class="n">action_type</span><span class="p" data-group-id="6397307905-12">(</span><span class="ss">:update</span><span class="p" data-group-id="6397307905-12">)</span><span class="w"> </span><span class="k" data-group-id="6397307905-13">do</span><span class="w">
+      </span><span class="n">authorize_if</span><span class="w"> </span><span class="n">relates_to_actor_via</span><span class="p" data-group-id="6397307905-14">(</span><span class="ss">:owner</span><span class="p" data-group-id="6397307905-14">)</span><span class="w">
+    </span><span class="k" data-group-id="6397307905-13">end</span><span class="w">
+  </span><span class="k" data-group-id="6397307905-11">end</span><span class="w">
+</span><span class="k" data-group-id="6397307905-1">end</span><span class="w">
+
+</span><span class="c1"># Wire up the account resolver</span><span class="w">
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Whatsapp.Accounts</span><span class="w"> </span><span class="k" data-group-id="6397307905-15">do</span><span class="w">
+  </span><span class="kn">alias</span><span class="w"> </span><span class="nc">ExWaha</span><span class="o">.</span><span class="p" data-group-id="6397307905-16">{</span><span class="nc">Instance</span><span class="p">,</span><span class="w"> </span><span class="nc">Providers.Waha.Account</span><span class="p" data-group-id="6397307905-16">}</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">for_profile</span><span class="p" data-group-id="6397307905-17">(</span><span class="p" data-group-id="6397307905-18">%</span><span class="nc" data-group-id="6397307905-18">MyApp.Whatsapp.Profile</span><span class="p" data-group-id="6397307905-18">{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="n">id</span><span class="p" data-group-id="6397307905-18">}</span><span class="p" data-group-id="6397307905-17">)</span><span class="w"> </span><span class="k" data-group-id="6397307905-19">do</span><span class="w">
+    </span><span class="nc">Account</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="6397307905-20">(</span><span class="w">
+      </span><span class="nc">Instance</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="6397307905-21">(</span><span class="ss">base_url</span><span class="p">:</span><span class="w"> </span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="6397307905-22">(</span><span class="s">&quot;WAHA_URL&quot;</span><span class="p" data-group-id="6397307905-22">)</span><span class="p">,</span><span class="w"> </span><span class="ss">api_key</span><span class="p">:</span><span class="w"> </span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="6397307905-23">(</span><span class="s">&quot;WAHA_KEY&quot;</span><span class="p" data-group-id="6397307905-23">)</span><span class="p" data-group-id="6397307905-21">)</span><span class="p">,</span><span class="w">
+      </span><span class="s">&quot;profile_</span><span class="si" data-group-id="6397307905-24">#{</span><span class="n">id</span><span class="si" data-group-id="6397307905-24">}</span><span class="s">&quot;</span><span class="w">
+    </span><span class="p" data-group-id="6397307905-20">)</span><span class="w">
+  </span><span class="k" data-group-id="6397307905-19">end</span><span class="w">
+</span><span class="k" data-group-id="6397307905-15">end</span><span class="w">
+
+</span><span class="c1"># Send a message — through Ash, with policy enforcement</span><span class="w">
+</span><span class="n">profile</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash.Changeset</span><span class="o">.</span><span class="n">for_update</span><span class="p" data-group-id="6397307905-25">(</span><span class="ss">:send_welcome</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6397307905-26">%{</span><span class="ss">greeting</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hi Mo!&quot;</span><span class="p" data-group-id="6397307905-26">}</span><span class="p">,</span><span class="w"> </span><span class="ss">actor</span><span class="p">:</span><span class="w"> </span><span class="n">current_user</span><span class="p" data-group-id="6397307905-25">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ash</span><span class="o">.</span><span class="n">update!</span><span class="p" data-group-id="6397307905-27">(</span><span class="p" data-group-id="6397307905-27">)</span></code></pre><h2 id="why-ash" class="section-heading"><a href="#why-ash" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Why Ash</span></h2><p>You get for free:</p><ul><li><strong>Authorization</strong>: a policy that says &quot;only the profile owner can send&quot; is
+enforced before any HTTP call leaves your app.</li><li><strong>Audit</strong>: every send is an Ash action — log it, track it, report on it.</li><li><strong>Validation</strong>: changesets reject malformed phone numbers / empty text
+before billing time on Meta.</li><li><strong>Background jobs</strong>: pair with <a href="https://hexdocs.pm/ash_oban">AshOban</a> and a
+<code class="inline">:send_welcome</code> action becomes an idempotent worker with retries.</li><li><strong>GraphQL / JSON:API</strong>: expose <code class="inline">:send_otp</code> as a mutation with
+<a href="https://hexdocs.pm/ash_graphql">AshGraphql</a> — no extra controller.</li></ul><h2 id="dsl-reference" class="section-heading"><a href="#dsl-reference" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">DSL reference</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">whatsapp</span><span class="w"> </span><span class="k" data-group-id="4329823587-1">do</span><span class="w">
+  </span><span class="n">account</span><span class="w"> </span><span class="p" data-group-id="4329823587-2">{</span><span class="nc">MyModule</span><span class="p">,</span><span class="w"> </span><span class="ss">:function</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4329823587-3">[</span><span class="n">extra</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p" data-group-id="4329823587-3">]</span><span class="p" data-group-id="4329823587-2">}</span><span class="w">   </span><span class="c1"># required</span><span class="w">
+  </span><span class="n">session_name</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">MyModule</span><span class="o">.</span><span class="n">session_for</span><span class="o">/</span><span class="mi">1</span><span class="w">            </span><span class="c1"># optional</span><span class="w">
+  </span><span class="n">on_event</span><span class="w"> </span><span class="p" data-group-id="4329823587-4">[</span><span class="p" data-group-id="4329823587-5">{</span><span class="ss">:message</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.MessageHandler</span><span class="p" data-group-id="4329823587-5">}</span><span class="p">,</span><span class="w">     </span><span class="c1"># optional, future use</span><span class="w">
+            </span><span class="p" data-group-id="4329823587-6">{</span><span class="ss">:message_ack</span><span class="p">,</span><span class="w"> </span><span class="nc">MyApp.AckHandler</span><span class="p" data-group-id="4329823587-6">}</span><span class="p" data-group-id="4329823587-4">]</span><span class="w">
+</span><span class="k" data-group-id="4329823587-1">end</span></code></pre><table><thead><tr><th style="text-align: left;">Option</th><th style="text-align: left;">Type</th><th style="text-align: left;">Description</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">account</code></td><td style="text-align: left;">MFA / 1-arity function / struct</td><td style="text-align: left;">Returns the <code class="inline">%ExWaha.Providers.Waha.Account{}</code> (or Meta) for a record.</td></tr><tr><td style="text-align: left;"><code class="inline">session_name</code></td><td style="text-align: left;">function / expression</td><td style="text-align: left;">Override the default session name derivation.</td></tr><tr><td style="text-align: left;"><code class="inline">on_event</code></td><td style="text-align: left;"><code class="inline">[{kind, module}]</code></td><td style="text-align: left;">Inbound webhook routing.</td></tr></tbody></table><p>See the full <a href="dsl_reference.html">DSL reference</a>.</p><h2 id="documentation" class="section-heading"><a href="#documentation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Documentation</span></h2><ul><li><a href="dsl_reference.html">DSL reference</a></li></ul><h2 id="license" class="section-heading"><a href="#license" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">License</span></h2><p>MIT. See the LICENSE file included in the package.</p>
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="changelog.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Changelog
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/ash_waha/0.1.0">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/ash_waha/0.1.0">Hex Preview</a>
+
+                (<a href="https://preview.hex.pm/preview/ash_waha/0.1.0/show/README.md">current file</a>)
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="llms.txt" target="_blank">
+                View llms.txt
+              </a>
+
+
+              <a href="AshWaha.epub">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.40.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

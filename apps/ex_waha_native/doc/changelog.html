@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.40.1">
+    <meta name="project" content="ExWahaNative v0.2.0">
+
+
+    <title>Changelog — ExWahaNative v0.2.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
+
+    <script defer src="dist/sidebar_items-315D70A3.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-YU4BZFVS.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+ExWahaNative
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.2.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras="Pages"></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ExWahaNative</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>Changelog</h1>
+
+<a href="changelog.md" title="Copy Markdown (hold Ctrl/Cmd and click it to open as Markdown)" class="copy-markdown icon-action" rel="help">
+  <i class="ri-markdown-line" aria-hidden="true"></i>
+  <span class="sr-only">Copy Markdown</span>
+</a>
+
+
+      <a href="https://github.com/nagieeb/ex_waha/blob/v0.2.0/CHANGELOG.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+<h2 id="0-2-0-2026-04-27" class="section-heading"><a href="#0-2-0-2026-04-27" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">[0.2.0] - 2026-04-27</span></h2><h3 id="added" class="section-heading"><a href="#added" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Added</span></h3><ul><li>Real <code class="inline">whatsmeow</code> integration in the Go bridge: <code class="inline">open_session</code>, QR
+pairing flow, phone-pairing-code flow, <code class="inline">send_text</code>, <code class="inline">logout</code>,
+<code class="inline">close_session</code>.</li><li>Event mapping from whatsmeow to the bridge protocol — <code class="inline">qr</code>, <code class="inline">paired</code>,
+<code class="inline">connected</code>, <code class="inline">disconnected</code>, <code class="inline">logged_out</code>, <code class="inline">message</code>, <code class="inline">message_ack</code>,
+<code class="inline">offline_sync_completed</code>.</li><li>SQLite session persistence via <code class="inline">modernc.org/sqlite</code> (pure Go, no CGo).
+In-memory store available via <code class="inline">:memory</code> for tests.</li><li><a href="ExWahaNative.Session.html#qr/1"><code class="inline">ExWahaNative.Session.qr/1</code></a> — read latest QR string from the session.</li><li><a href="ExWahaNative.Session.html#request_pairing_code/2"><code class="inline">ExWahaNative.Session.request_pairing_code/2</code></a> — link without QR.</li><li><a href="ExWahaNative.Session.html#logout/1"><code class="inline">ExWahaNative.Session.logout/1</code></a> — invalidate the WhatsApp pairing.</li><li><a href="ExWahaNative.Session.html#stop/1"><code class="inline">ExWahaNative.Session.stop/1</code></a> — close the local session without logging
+out.</li><li><code class="inline">examples/03_send_via_native.exs</code> — end-to-end pair + send walkthrough.</li></ul><h3 id="changed" class="section-heading"><a href="#changed" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Changed</span></h3><ul><li>Go module updated to <code class="inline">whatsmeow v0.0.0-20260421083005-5b8886176ff7</code>,
+<code class="inline">modernc.org/sqlite v1.50.0</code>, <code class="inline">google.golang.org/protobuf v1.36.11</code>.</li><li>README marked 0.2.0 status; usage section now reflects the working
+pairing/send flow.</li></ul><h2 id="0-1-0-2026-04-27" class="section-heading"><a href="#0-1-0-2026-04-27" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">[0.1.0] - 2026-04-27</span></h2><h3 id="added-1" class="section-heading"><a href="#added-1" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Added</span></h3><ul><li><a href="ExWahaNative.Wire.html"><code class="inline">ExWahaNative.Wire</code></a> — length-prefixed JSON framing for the Elixir &lt;-&gt; Go
+bridge protocol with stream decoding and request-correlation refs.</li><li><a href="ExWahaNative.Bridge.html"><code class="inline">ExWahaNative.Bridge</code></a> — Port-owning GenServer that manages the Go process,
+serializes outbound requests, correlates responses, dispatches async
+events to the right Session.</li><li><a href="ExWahaNative.Session.html"><code class="inline">ExWahaNative.Session</code></a> — per-account GenServer holding status, QR, and
+subscribers; routes outbound calls through the Bridge.</li><li><code class="inline">ExWahaNative.Session.{Registry, Supervisor}</code> — registry + dynamic
+supervisor for Session processes.</li><li><a href="ExWahaNative.Account.html"><code class="inline">ExWahaNative.Account</code></a> — account struct identifying a session and its
+store backend.</li><li><a href="ExWahaNative.Provider.html"><code class="inline">ExWahaNative.Provider</code></a> — implements <a href="https://hexdocs.pm/ex_waha/0.1.0/ExWaha.Provider.html"><code class="inline">ExWaha.Provider</code></a> so calls go through
+the unified facade.</li><li><a href="Mix.Tasks.ExWahaNative.BuildNative.html"><code class="inline">Mix.Tasks.ExWahaNative.BuildNative</code></a> — <a href="Mix.Tasks.ExWahaNative.BuildNative.html"><code class="inline">mix ex_waha_native.build_native</code></a>
+compiles the Go bridge binary with optional <code class="inline">--target</code> cross-compilation.</li><li>Go bridge skeleton (<code class="inline">native/bridge/main.go</code>) — stdio loop, JSON framing,
+<code class="inline">ping</code> handler, stub handlers for the planned ops.</li></ul><h3 id="known-limitations" class="section-heading"><a href="#known-limitations" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Known limitations</span></h3><ul><li><code class="inline">whatsmeow</code> is not yet integrated on the Go side. All ops except <code class="inline">ping</code>
+return <code class="inline">{&quot;ok&quot;: false, &quot;code&quot;: &quot;not_implemented&quot;}</code>. Wiring is the focus
+of 0.2.0.</li><li><code class="inline">ExWahaNative.Provider.parse_event/2</code> and <code class="inline">verify_signature/3</code> are
+stubs — events flow over the bridge directly, not through HTTP webhooks.</li></ul>
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="readme.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+ExWahaNative
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+  </div>
+</div>
+    <footer class="footer">
+
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/ex_waha_native/0.2.0">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/ex_waha_native/0.2.0">Hex Preview</a>
+
+                (<a href="https://preview.hex.pm/preview/ex_waha_native/0.2.0/show/CHANGELOG.md">current file</a>)
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="llms.txt" target="_blank">
+                View llms.txt
+              </a>
+
+
+              <a href="ExWahaNative.epub">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.40.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

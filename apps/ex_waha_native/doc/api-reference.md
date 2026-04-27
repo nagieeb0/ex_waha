@@ -1,0 +1,18 @@
+# ExWahaNative v0.2.0 - API Reference
+
+## Modules
+
+- [ExWahaNative](ExWahaNative.md): Native Elixir provider for ExWaha — no WAHA Docker container required.
+- [ExWahaNative.Account](ExWahaNative.Account.md): An account on the native (whatsmeow) provider.
+- [ExWahaNative.Bridge](ExWahaNative.Bridge.md): GenServer that owns the Go bridge `Port` and routes traffic between
+Elixir callers and the whatsmeow process.
+- [ExWahaNative.Provider](ExWahaNative.Provider.md): `ExWaha.Provider` implementation that routes through the Go bridge.
+- [ExWahaNative.Session](ExWahaNative.Session.md): Per-WhatsApp-account state machine.
+- [ExWahaNative.Session.Registry](ExWahaNative.Session.Registry.md): Process registry for `ExWahaNative.Session` instances, keyed by session name.
+- [ExWahaNative.Session.Supervisor](ExWahaNative.Session.Supervisor.md): DynamicSupervisor for per-account `ExWahaNative.Session` processes.
+- [ExWahaNative.Wire](ExWahaNative.Wire.md): Length-prefixed JSON framing for the Bridge ↔ Go process protocol.
+
+## Mix Tasks
+
+- [mix ex_waha_native.build_native](Mix.Tasks.ExWahaNative.BuildNative.md): Build the Go bridge binary.
+

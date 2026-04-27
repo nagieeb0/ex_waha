@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.40.1">
+    <meta name="project" content="ExWahaPhoenix v0.1.0">
+
+
+    <title>Webhook reference — ExWahaPhoenix v0.1.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
+
+    <script defer src="dist/sidebar_items-7120A12A.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-YU4BZFVS.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+ExWahaPhoenix
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras="Pages"></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ExWahaPhoenix</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>Webhook reference</h1>
+
+<a href="webhooks.md" title="Copy Markdown (hold Ctrl/Cmd and click it to open as Markdown)" class="copy-markdown icon-action" rel="help">
+  <i class="ri-markdown-line" aria-hidden="true"></i>
+  <span class="sr-only">Copy Markdown</span>
+</a>
+
+
+      <a href="https://github.com/nagieeb/ex_waha/blob/v0.1.0/guides/webhooks.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+<p><a href="ExWahaPhoenix.WebhookPlug.html"><code class="inline">ExWahaPhoenix.WebhookPlug</code></a> is a <a href="https://hexdocs.pm/plug/1.19.1/Plug.html"><code class="inline">Plug</code></a> (not a Phoenix controller) that
+runs the full receive pipeline:</p><pre><code class="makeup elixir" translate="no"><span class="n">read</span><span class="w"> </span><span class="n">raw</span><span class="w"> </span><span class="n">body</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">verify</span><span class="w"> </span><span class="nc">HMAC</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="nc">JSON</span><span class="w"> </span><span class="n">decode</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">parse_event</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">dispatch</span><span class="w"> </span><span class="n">handler</span></code></pre><p>It returns:</p><ul><li><code class="inline">200 ok</code> on success</li><li><code class="inline">401 invalid signature</code> on HMAC mismatch</li><li><code class="inline">400 invalid json</code> / <code class="inline">400 bad request</code> on malformed payloads</li></ul><h2 id="mounting" class="section-heading"><a href="#mounting" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Mounting</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">forward</span><span class="w"> </span><span class="s">&quot;/webhooks/waha/:profile_id&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nc">ExWahaPhoenix.WebhookPlug</span><span class="p">,</span><span class="w">
+        </span><span class="ss">handler</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Whatsapp.Handler</span><span class="p">,</span><span class="w">
+        </span><span class="ss">account</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3277730189-1">{</span><span class="nc">MyApp.Whatsapp</span><span class="p">,</span><span class="w"> </span><span class="ss">:account_for_conn</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3277730189-2">[</span><span class="p" data-group-id="3277730189-2">]</span><span class="p" data-group-id="3277730189-1">}</span><span class="p">,</span><span class="w">
+        </span><span class="ss">context</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3277730189-3">%{</span><span class="ss">source</span><span class="p">:</span><span class="w"> </span><span class="ss">:phoenix</span><span class="p" data-group-id="3277730189-3">}</span></code></pre><h3 id="options" class="section-heading"><a href="#options" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Options</span></h3><table><thead><tr><th style="text-align: left;">Option</th><th style="text-align: left;">Required</th><th style="text-align: left;">Description</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">:handler</code></td><td style="text-align: left;">yes</td><td style="text-align: left;">Module implementing <a href="https://hexdocs.pm/ex_waha/0.1.0/ExWaha.Webhooks.Handler.html"><code class="inline">ExWaha.Webhooks.Handler</code></a></td></tr><tr><td style="text-align: left;"><code class="inline">:account</code></td><td style="text-align: left;">yes</td><td style="text-align: left;">MFA, 1-arity function <code class="inline">(conn -&gt; account)</code>, or static account struct</td></tr><tr><td style="text-align: left;"><code class="inline">:context</code></td><td style="text-align: left;">no</td><td style="text-align: left;">Extra map merged into the handler context (defaults to <code class="inline">%{}</code>)</td></tr></tbody></table><p>The handler receives <code class="inline">%{account: account, conn: conn}</code> merged with your
+<code class="inline">:context</code>.</p><h2 id="the-body-reader" class="section-heading"><a href="#the-body-reader" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">The body reader</span></h2><p><a href="https://hexdocs.pm/plug/1.19.1/Plug.Parsers.html"><code class="inline">Plug.Parsers</code></a> consumes the request body — by the time your plug runs,
+<a href="https://hexdocs.pm/plug/1.19.1/Plug.Conn.html#read_body/2"><code class="inline">Plug.Conn.read_body/2</code></a> returns <code class="inline">&quot;&quot;</code>. Without raw bytes, HMAC verification
+will fail.</p><p>Add the body reader to your endpoint <strong>before</strong> the parsers run:</p><pre><code class="makeup elixir" translate="no"><span class="n">plug</span><span class="w"> </span><span class="nc">Plug.Parsers</span><span class="p">,</span><span class="w">
+  </span><span class="ss">parsers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6810442065-1">[</span><span class="ss">:urlencoded</span><span class="p">,</span><span class="w"> </span><span class="ss">:multipart</span><span class="p">,</span><span class="w"> </span><span class="ss">:json</span><span class="p" data-group-id="6810442065-1">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">pass</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6810442065-2">[</span><span class="s">&quot;*/*&quot;</span><span class="p" data-group-id="6810442065-2">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">json_decoder</span><span class="p">:</span><span class="w"> </span><span class="nc">Phoenix</span><span class="o">.</span><span class="n">json_library</span><span class="p" data-group-id="6810442065-3">(</span><span class="p" data-group-id="6810442065-3">)</span><span class="p">,</span><span class="w">
+  </span><span class="ss">body_reader</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6810442065-4">{</span><span class="nc">ExWahaPhoenix.WebhookPlug</span><span class="p">,</span><span class="w"> </span><span class="ss">:read_body</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6810442065-5">[</span><span class="p" data-group-id="6810442065-5">]</span><span class="p" data-group-id="6810442065-4">}</span></code></pre><p><code class="inline">read_body/2</code> is a thin wrapper that caches the bytes in <code class="inline">conn.private</code>
+under <code class="inline">:ex_waha_raw_body</code>, so the plug can re-read them later.</p><h2 id="per-account-isolation" class="section-heading"><a href="#per-account-isolation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Per-account isolation</span></h2><p>The <code class="inline">:account</code> resolver is the join point between the URL and the tenant.
+A clean implementation keeps it explicit:</p><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Whatsapp</span><span class="w"> </span><span class="k" data-group-id="6381340218-1">do</span><span class="w">
+  </span><span class="na">@spec</span><span class="w"> </span><span class="n">account_for_conn</span><span class="p" data-group-id="6381340218-2">(</span><span class="nc">Plug.Conn</span><span class="o">.</span><span class="n">t</span><span class="p" data-group-id="6381340218-3">(</span><span class="p" data-group-id="6381340218-3">)</span><span class="p" data-group-id="6381340218-2">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">ExWaha.Providers.Waha.Account</span><span class="o">.</span><span class="n">t</span><span class="p" data-group-id="6381340218-4">(</span><span class="p" data-group-id="6381340218-4">)</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">account_for_conn</span><span class="p" data-group-id="6381340218-5">(</span><span class="p" data-group-id="6381340218-6">%</span><span class="nc" data-group-id="6381340218-6">Plug.Conn</span><span class="p" data-group-id="6381340218-6">{</span><span class="ss">path_params</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6381340218-7">%{</span><span class="s">&quot;profile_id&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">id</span><span class="p" data-group-id="6381340218-7">}</span><span class="p" data-group-id="6381340218-6">}</span><span class="p" data-group-id="6381340218-5">)</span><span class="w"> </span><span class="k" data-group-id="6381340218-8">do</span><span class="w">
+    </span><span class="n">account_for!</span><span class="p" data-group-id="6381340218-9">(</span><span class="n">id</span><span class="p" data-group-id="6381340218-9">)</span><span class="w">
+  </span><span class="k" data-group-id="6381340218-8">end</span><span class="w">
+</span><span class="k" data-group-id="6381340218-1">end</span></code></pre><p>Never trust webhook payload fields to identify the tenant — those are
+attacker-controlled. Always derive from the URL (which is signed).</p><h2 id="async-handler-work" class="section-heading"><a href="#async-handler-work" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Async handler work</span></h2><p>Handlers run synchronously inside the request. Long work belongs in Oban:</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">handle_event</span><span class="p" data-group-id="7961291516-1">(</span><span class="p" data-group-id="7961291516-2">%</span><span class="nc" data-group-id="7961291516-2">Event</span><span class="p" data-group-id="7961291516-2">{</span><span class="ss">kind</span><span class="p">:</span><span class="w"> </span><span class="ss">:message</span><span class="p" data-group-id="7961291516-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">event</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="p" data-group-id="7961291516-1">)</span><span class="w"> </span><span class="k" data-group-id="7961291516-3">do</span><span class="w">
+  </span><span class="p" data-group-id="7961291516-4">%{</span><span class="ss">event</span><span class="p">:</span><span class="w"> </span><span class="nc">Map</span><span class="o">.</span><span class="n">from_struct</span><span class="p" data-group-id="7961291516-5">(</span><span class="n">event</span><span class="p" data-group-id="7961291516-5">)</span><span class="p">,</span><span class="w"> </span><span class="ss">profile_id</span><span class="p">:</span><span class="w"> </span><span class="n">profile_id</span><span class="p" data-group-id="7961291516-6">(</span><span class="n">ctx</span><span class="p" data-group-id="7961291516-6">)</span><span class="p" data-group-id="7961291516-4">}</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MyApp.Whatsapp.Workers.IngestInbound</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="7961291516-7">(</span><span class="p" data-group-id="7961291516-7">)</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Oban</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="7961291516-8">(</span><span class="p" data-group-id="7961291516-8">)</span><span class="w">
+
+  </span><span class="ss">:ok</span><span class="w">
+</span><span class="k" data-group-id="7961291516-3">end</span></code></pre><p>This keeps the WebhookPlug response under 100ms and gives you retries +
+backoff for free.</p><h2 id="configuring-waha-to-point-here" class="section-heading"><a href="#configuring-waha-to-point-here" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Configuring WAHA to point here</span></h2><pre><code class="makeup bash" translate="no"><span class="">docker run -d \
+</span><span class="">  -e WHATSAPP_HOOK_URL=https://api.example.com/webhooks/waha/profile_42 \
+</span><span class="">  -e WHATSAPP_HOOK_HMAC_KEY=$WAHA_WEBHOOK_SECRET \
+</span><span class="">  devlikeapro/waha
+</span></code></pre><p>Or programmatically in <code class="inline">Sessions.create/2</code>:</p><pre><code class="makeup elixir" translate="no"><span class="nc">ExWaha.Api.Sessions</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="6683051406-1">(</span><span class="n">account</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6683051406-2">%{</span><span class="w">
+  </span><span class="ss">webhooks</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6683051406-3">[</span><span class="w">
+    </span><span class="p" data-group-id="6683051406-4">%{</span><span class="w">
+      </span><span class="ss">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://api.example.com/webhooks/waha/</span><span class="si" data-group-id="6683051406-5">#{</span><span class="n">profile_id</span><span class="si" data-group-id="6683051406-5">}</span><span class="s">&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">events</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6683051406-6">[</span><span class="s">&quot;message&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;message.ack&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;session.status&quot;</span><span class="p" data-group-id="6683051406-6">]</span><span class="p">,</span><span class="w">
+      </span><span class="ss">hmac</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6683051406-7">%{</span><span class="ss">key</span><span class="p">:</span><span class="w"> </span><span class="n">account</span><span class="o">.</span><span class="n">webhook_secret</span><span class="p" data-group-id="6683051406-7">}</span><span class="w">
+    </span><span class="p" data-group-id="6683051406-4">}</span><span class="w">
+  </span><span class="p" data-group-id="6683051406-3">]</span><span class="w">
+</span><span class="p" data-group-id="6683051406-2">}</span><span class="p" data-group-id="6683051406-1">)</span></code></pre>
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="changelog.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Changelog
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="dashboard.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Dashboard
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/ex_waha_phoenix/0.1.0">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/ex_waha_phoenix/0.1.0">Hex Preview</a>
+
+                (<a href="https://preview.hex.pm/preview/ex_waha_phoenix/0.1.0/show/guides/webhooks.md">current file</a>)
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="llms.txt" target="_blank">
+                View llms.txt
+              </a>
+
+
+              <a href="ExWahaPhoenix.epub">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.40.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

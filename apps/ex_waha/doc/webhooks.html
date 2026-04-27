@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.40.1">
+    <meta name="project" content="ExWaha v0.1.0">
+
+
+    <title>Webhooks — ExWaha v0.1.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
+
+    <script defer src="dist/sidebar_items-CDDD7C96.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-YU4BZFVS.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+ExWaha
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras="Pages"></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ExWaha</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>Webhooks</h1>
+
+<a href="webhooks.md" title="Copy Markdown (hold Ctrl/Cmd and click it to open as Markdown)" class="copy-markdown icon-action" rel="help">
+  <i class="ri-markdown-line" aria-hidden="true"></i>
+  <span class="sr-only">Copy Markdown</span>
+</a>
+
+
+      <a href="https://github.com/nagieeb/ex_waha/blob/v0.1.0/guides/webhooks.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+<p>ExWaha normalizes the wildly different webhook payload shapes from WAHA
+and Meta into a single <code class="inline">%ExWaha.Webhooks.Event{}</code> struct that your
+application code consumes.</p><h2 id="pipeline" class="section-heading"><a href="#pipeline" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Pipeline</span></h2><pre><code class="makeup elixir" translate="no"><span class="nc">HTTP</span><span class="w"> </span><span class="nc">POST</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">verify</span><span class="w"> </span><span class="nc">HMAC</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="nc">JSON</span><span class="w"> </span><span class="n">decode</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">parse_event</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">handler</span><span class="o">.</span><span class="n">handle_event</span><span class="o">/</span><span class="mi">2</span><span class="w">
+            </span><span class="p" data-group-id="6512780863-1">(</span><span class="nc">Signature</span><span class="p" data-group-id="6512780863-1">)</span><span class="w">                  </span><span class="p" data-group-id="6512780863-2">(</span><span class="nc">Provider</span><span class="p" data-group-id="6512780863-2">)</span><span class="w">    </span><span class="p" data-group-id="6512780863-3">(</span><span class="n">your</span><span class="w"> </span><span class="n">module</span><span class="p" data-group-id="6512780863-3">)</span></code></pre><p>If you're on Phoenix, <a href="https://hexdocs.pm/ex_waha_phoenix"><code class="inline">ExWahaPhoenix.WebhookPlug</code></a>
+runs that whole pipeline for you. For other transports, do it manually.</p><h2 id="implementing-a-handler" class="section-heading"><a href="#implementing-a-handler" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Implementing a handler</span></h2><pre><code class="makeup elixir" translate="no"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Whatsapp.Handler</span><span class="w"> </span><span class="k" data-group-id="5800205433-1">do</span><span class="w">
+  </span><span class="na">@behaviour</span><span class="w"> </span><span class="nc">ExWaha.Webhooks.Handler</span><span class="w">
+
+  </span><span class="kn">alias</span><span class="w"> </span><span class="nc">ExWaha.Webhooks.Event</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_event</span><span class="p" data-group-id="5800205433-2">(</span><span class="p" data-group-id="5800205433-3">%</span><span class="nc" data-group-id="5800205433-3">Event</span><span class="p" data-group-id="5800205433-3">{</span><span class="ss">kind</span><span class="p">:</span><span class="w"> </span><span class="ss">:message</span><span class="p" data-group-id="5800205433-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="p" data-group-id="5800205433-2">)</span><span class="w"> </span><span class="k" data-group-id="5800205433-4">do</span><span class="w">
+    </span><span class="nc">MyApp.Whatsapp</span><span class="o">.</span><span class="n">persist_inbound</span><span class="p" data-group-id="5800205433-5">(</span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="o">.</span><span class="n">account</span><span class="p" data-group-id="5800205433-5">)</span><span class="w">
+    </span><span class="nc">Phoenix.PubSub</span><span class="o">.</span><span class="n">broadcast</span><span class="p" data-group-id="5800205433-6">(</span><span class="nc">MyApp.PubSub</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;wa:</span><span class="si" data-group-id="5800205433-7">#{</span><span class="n">ctx</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">session</span><span class="si" data-group-id="5800205433-7">}</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5800205433-8">{</span><span class="ss">:msg</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p" data-group-id="5800205433-8">}</span><span class="p" data-group-id="5800205433-6">)</span><span class="w">
+    </span><span class="ss">:ok</span><span class="w">
+  </span><span class="k" data-group-id="5800205433-4">end</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_event</span><span class="p" data-group-id="5800205433-9">(</span><span class="p" data-group-id="5800205433-10">%</span><span class="nc" data-group-id="5800205433-10">Event</span><span class="p" data-group-id="5800205433-10">{</span><span class="ss">kind</span><span class="p">:</span><span class="w"> </span><span class="ss">:message_ack</span><span class="p" data-group-id="5800205433-10">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="c">_ctx</span><span class="p" data-group-id="5800205433-9">)</span><span class="w"> </span><span class="k" data-group-id="5800205433-11">do</span><span class="w">
+    </span><span class="nc">MyApp.Whatsapp</span><span class="o">.</span><span class="n">update_delivery_state</span><span class="p" data-group-id="5800205433-12">(</span><span class="n">e</span><span class="o">.</span><span class="n">raw</span><span class="p" data-group-id="5800205433-13">[</span><span class="s">&quot;id&quot;</span><span class="p" data-group-id="5800205433-13">]</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="o">.</span><span class="n">ack_status</span><span class="p" data-group-id="5800205433-12">)</span><span class="w">
+  </span><span class="k" data-group-id="5800205433-11">end</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_event</span><span class="p" data-group-id="5800205433-14">(</span><span class="p" data-group-id="5800205433-15">%</span><span class="nc" data-group-id="5800205433-15">Event</span><span class="p" data-group-id="5800205433-15">{</span><span class="ss">kind</span><span class="p">:</span><span class="w"> </span><span class="ss">:session_status</span><span class="p">,</span><span class="w"> </span><span class="ss">raw</span><span class="p">:</span><span class="w"> </span><span class="n">raw</span><span class="p" data-group-id="5800205433-15">}</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="p" data-group-id="5800205433-14">)</span><span class="w"> </span><span class="k" data-group-id="5800205433-16">do</span><span class="w">
+    </span><span class="n">new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">String</span><span class="o">.</span><span class="n">downcase</span><span class="p" data-group-id="5800205433-17">(</span><span class="n">raw</span><span class="p" data-group-id="5800205433-18">[</span><span class="s">&quot;status&quot;</span><span class="p" data-group-id="5800205433-18">]</span><span class="p" data-group-id="5800205433-17">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">String</span><span class="o">.</span><span class="n">to_existing_atom</span><span class="p" data-group-id="5800205433-19">(</span><span class="p" data-group-id="5800205433-19">)</span><span class="w">
+    </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ExWaha.Session.Registry</span><span class="o">.</span><span class="n">via</span><span class="p" data-group-id="5800205433-20">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">account</span><span class="p" data-group-id="5800205433-20">)</span><span class="w">
+    </span><span class="nc">ExWaha.Session.Server</span><span class="o">.</span><span class="n">set_status</span><span class="p" data-group-id="5800205433-21">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="n">new</span><span class="p" data-group-id="5800205433-21">)</span><span class="w">
+  </span><span class="k" data-group-id="5800205433-16">end</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_event</span><span class="p" data-group-id="5800205433-22">(</span><span class="c">_event</span><span class="p">,</span><span class="w"> </span><span class="c">_ctx</span><span class="p" data-group-id="5800205433-22">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="ss">:ok</span><span class="w">
+</span><span class="k" data-group-id="5800205433-1">end</span></code></pre><p>The handler runs synchronously inside the webhook request. <strong>Don't do slow
+work here</strong> — push to Oban / Task.Supervisor for anything beyond a DB write
+or PubSub broadcast.</p><h2 id="event-reference" class="section-heading"><a href="#event-reference" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Event reference</span></h2><p><code class="inline">%ExWaha.Webhooks.Event{}</code> fields:</p><table><thead><tr><th style="text-align: left;">Field</th><th style="text-align: left;">Type</th><th style="text-align: left;">Notes</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">provider</code></td><td style="text-align: left;"><code class="inline">:waha | :meta</code></td><td style="text-align: left;"></td></tr><tr><td style="text-align: left;"><code class="inline">kind</code></td><td style="text-align: left;"><code class="inline">:message | :message_ack | :message_reaction | :session_status | :group_update | :presence | :unknown</code></td><td style="text-align: left;">Normalized across providers</td></tr><tr><td style="text-align: left;"><code class="inline">session</code></td><td style="text-align: left;"><code class="inline">String.t() | nil</code></td><td style="text-align: left;">WAHA session name; nil for Meta</td></tr><tr><td style="text-align: left;"><code class="inline">timestamp</code></td><td style="text-align: left;"><code class="inline">DateTime.t() | nil</code></td><td style="text-align: left;"></td></tr><tr><td style="text-align: left;"><code class="inline">from</code></td><td style="text-align: left;"><code class="inline">String.t() | nil</code></td><td style="text-align: left;">Chat id (<code class="inline">...@c.us</code>) for WAHA, E.164 for Meta</td></tr><tr><td style="text-align: left;"><code class="inline">to</code></td><td style="text-align: left;"><code class="inline">String.t() | nil</code></td><td style="text-align: left;"></td></tr><tr><td style="text-align: left;"><code class="inline">chat_id</code></td><td style="text-align: left;"><code class="inline">String.t() | nil</code></td><td style="text-align: left;">WAHA only</td></tr><tr><td style="text-align: left;"><code class="inline">body</code></td><td style="text-align: left;"><code class="inline">String.t() | nil</code></td><td style="text-align: left;">Text body for <code class="inline">:message</code> kind</td></tr><tr><td style="text-align: left;"><code class="inline">media</code></td><td style="text-align: left;"><code class="inline">map() | nil</code></td><td style="text-align: left;">Media descriptor (when present)</td></tr><tr><td style="text-align: left;"><code class="inline">ack_status</code></td><td style="text-align: left;"><code class="inline">atom() | String.t() | nil</code></td><td style="text-align: left;"><code class="inline">:sent | :delivered | :read | :played</code> (or string from Meta)</td></tr><tr><td style="text-align: left;"><code class="inline">raw</code></td><td style="text-align: left;"><code class="inline">map()</code></td><td style="text-align: left;">Full provider payload — fall back here for fields the normalized form doesn't expose</td></tr></tbody></table><h2 id="hmac-signatures" class="section-heading"><a href="#hmac-signatures" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">HMAC signatures</span></h2><p>Both providers sign the <strong>raw request body</strong>. If your stack runs <a href="https://hexdocs.pm/plug/1.19.1/Plug.Parsers.html"><code class="inline">Plug.Parsers</code></a>
+before signature verification, the body is gone — use the body reader from
+<code class="inline">ExWahaPhoenix.WebhookPlug</code> (or capture it manually).</p><table><thead><tr><th style="text-align: left;">Provider</th><th style="text-align: left;">Algorithm</th><th style="text-align: left;">Header</th><th style="text-align: left;">Format</th></tr></thead><tbody><tr><td style="text-align: left;">WAHA</td><td style="text-align: left;">HMAC-SHA512</td><td style="text-align: left;"><code class="inline">X-Webhook-Hmac</code></td><td style="text-align: left;">hex digest</td></tr><tr><td style="text-align: left;">Meta</td><td style="text-align: left;">HMAC-SHA256</td><td style="text-align: left;"><code class="inline">X-Hub-Signature-256</code></td><td style="text-align: left;"><code class="inline">sha256=&lt;hex&gt;</code></td></tr></tbody></table><p>Manual verification:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># WAHA</span><span class="w">
+</span><span class="nc">ExWaha.Webhooks.Signature</span><span class="o">.</span><span class="n">verify_sha512</span><span class="p" data-group-id="3358671370-1">(</span><span class="n">raw_body</span><span class="p">,</span><span class="w"> </span><span class="n">header_value</span><span class="p">,</span><span class="w"> </span><span class="n">account</span><span class="o">.</span><span class="n">webhook_secret</span><span class="p" data-group-id="3358671370-1">)</span><span class="w">
+
+</span><span class="c1"># Meta</span><span class="w">
+</span><span class="nc">ExWaha.Webhooks.Signature</span><span class="o">.</span><span class="n">verify_meta_sha256</span><span class="p" data-group-id="3358671370-2">(</span><span class="n">raw_body</span><span class="p">,</span><span class="w"> </span><span class="n">header_value</span><span class="p">,</span><span class="w"> </span><span class="n">account</span><span class="o">.</span><span class="n">app_secret</span><span class="p" data-group-id="3358671370-2">)</span></code></pre><p>Comparison is constant-time via <a href="https://www.erlang.org/doc/apps/crypto/crypto.html#hash_equals/2"><code class="inline">:crypto.hash_equals/2</code></a>.</p><h2 id="waha-event-names" class="section-heading"><a href="#waha-event-names" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">WAHA event names</span></h2><p>WAHA sends one event per HTTP POST. Common <code class="inline">event</code> values:</p><ul><li><code class="inline">message</code> — incoming message</li><li><code class="inline">message.ack</code> — sent-message status update</li><li><code class="inline">message.reaction</code> — emoji reaction added/removed</li><li><code class="inline">session.status</code> — session transitioned (e.g. <code class="inline">WORKING → FAILED</code>)</li><li><code class="inline">group.v2.join</code> / <code class="inline">group.v2.leave</code> / <code class="inline">group.v2.update</code></li><li><code class="inline">presence.update</code></li></ul><p><code class="inline">Event.from_waha/1</code> maps these to <code class="inline">kind</code>. Anything unrecognized lands as
+<code class="inline">:unknown</code> with the original payload in <code class="inline">raw</code>.</p><h2 id="meta-event-payloads" class="section-heading"><a href="#meta-event-payloads" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Meta event payloads</span></h2><p>Meta posts an envelope with multiple entries → changes → values. ExWaha
+flattens to a list of <code class="inline">%Event{}</code> structs. A single POST commonly contains
+both inbound <code class="inline">messages</code> and outbound <code class="inline">statuses</code> for previously-sent
+messages.</p><h2 id="configuring-webhooks" class="section-heading"><a href="#configuring-webhooks" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Configuring webhooks</span></h2><p>WAHA session config (passed to <a href="ExWaha.Api.Sessions.html#create/2"><code class="inline">ExWaha.Api.Sessions.create/2</code></a>):</p><pre><code class="makeup elixir" translate="no"><span class="nc">ExWaha.Api.Sessions</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="2066417225-1">(</span><span class="n">account</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2066417225-2">%{</span><span class="w">
+  </span><span class="ss">webhooks</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2066417225-3">[</span><span class="w">
+    </span><span class="p" data-group-id="2066417225-4">%{</span><span class="w">
+      </span><span class="ss">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://api.example.com/webhooks/waha/profile_42&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">events</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2066417225-5">[</span><span class="s">&quot;message&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;message.ack&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;session.status&quot;</span><span class="p" data-group-id="2066417225-5">]</span><span class="p">,</span><span class="w">
+      </span><span class="ss">hmac</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2066417225-6">%{</span><span class="ss">key</span><span class="p">:</span><span class="w"> </span><span class="n">account</span><span class="o">.</span><span class="n">webhook_secret</span><span class="p" data-group-id="2066417225-6">}</span><span class="w">
+    </span><span class="p" data-group-id="2066417225-4">}</span><span class="w">
+  </span><span class="p" data-group-id="2066417225-3">]</span><span class="w">
+</span><span class="p" data-group-id="2066417225-2">}</span><span class="p" data-group-id="2066417225-1">)</span></code></pre><p>Meta webhooks are configured in the App Dashboard, not via API.</p>
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="safety_and_bans.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Safety and bans
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="providers.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Providers
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/ex_waha/0.1.0">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/ex_waha/0.1.0">Hex Preview</a>
+
+                (<a href="https://preview.hex.pm/preview/ex_waha/0.1.0/show/guides/webhooks.md">current file</a>)
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="llms.txt" target="_blank">
+                View llms.txt
+              </a>
+
+
+              <a href="ExWaha.epub">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.40.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>
